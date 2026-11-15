@@ -1,0 +1,129 @@
+data/errors/interactions_errors.csv
+  s_c29a9b9c98f25e::t_b40d81389a61b2 1-36
+data/errors/interactions_warnings.csv
+  s_c29a9b9c98f25e::t_091a2a05c5474d 1-26
+data/errors/items_errors.csv
+  s_c29a9b9c98f25e::t_23794ba8402574 1-2
+data/errors/items_warnings.csv
+  s_c29a9b9c98f25e::t_2938f0dd241e30 1-15
+data/errors/users_errors.csv
+  s_c29a9b9c98f25e::t_63dc565a7f1a85 1-3
+data/errors/users_warnings.csv
+  s_c29a9b9c98f25e::t_9405d0efd6de55 1-13
+data/features/train/metadata.json
+  s_c29a9b9c98f25e::t_5864d513108710 1-13
+data/features/validation/metadata.json
+  s_c29a9b9c98f25e::t_a6bbf171bb75fd 1-13
+data/processed/derived/user_item_matrix_index.json
+  s_c29a9b9c98f25e::t_5fed28e85e0751 1-2646
+data/raw/injected_anomalies_log.csv
+  s_c29a9b9c98f25e::t_6716e9feb417ac 1-79
+data/raw/interactions.csv
+  s_c29a9b9c98f25e::t_f032e2f5204e11 1-100056
+data/raw/items.csv
+  s_c29a9b9c98f25e::t_8ca5eca8284399 1-1692
+data/raw/users.csv
+  s_c29a9b9c98f25e::t_bc74b2d632d508 1-958
+models/registry.json
+  s_c29a9b9c98f25e::t_3b63fba84ba76f 1-80
+reports/evaluation_results.csv
+  s_c29a9b9c98f25e::t_0688ca6c049ed0 1-6
+reports/evaluation_results.json
+  s_c29a9b9c98f25e::t_f2b5cfc7368bfa 1-109
+reports/evaluation_results.md
+  s_c29a9b9c98f25e::t_05ffc4f74c29f6 1-19
+reports/feature_catalog.csv
+  s_c29a9b9c98f25e::t_368c2010f0c0d5 1-50
+reports/feature_catalog.md
+  s_c29a9b9c98f25e::t_96edbf6033650b 1-42
+reports/feature_snapshots.json
+  s_c29a9b9c98f25e::t_ed11a8fa054f34 1-28
+reports/hybrid_weight_search.csv
+  s_c29a9b9c98f25e::t_246dcd695a24f0 1-55
+reports/ingestion_manifest.json
+  s_c29a9b9c98f25e::t_e40202e33fdb4d 1-28
+reports/preparation_report.json
+  s_c29a9b9c98f25e::t_7166b5f7415ecc 1-60
+reports/sample_recommendations.csv
+  s_c29a9b9c98f25e::t_12a76770ef8822 1-16
+reports/transformation_summary.json
+  s_c29a9b9c98f25e::t_565d62ac16c93f 1-53
+reports/tuning_results.json
+  s_c29a9b9c98f25e::t_395397b3d8d7f3 1-130
+reports/validation_report.json
+  s_c29a9b9c98f25e::t_641d8948b2444e 1-511
+reports/validation_report.md
+  s_c29a9b9c98f25e::t_efabadda7a9cdd 1-105
+requirements.txt
+  s_c29a9b9c98f25e::t_f39305f411796e 1-13
+src/evaluation/metrics.py
+  s_3388bbc60cbc5c::t_3aff0e7ef5842c 1-61
+.gitignore
+  s_c29a9b9c98f25e::t_06b3a73557a811 1-12
+Makefile
+  s_c29a9b9c98f25e::t_145e13214b2476 1-31
+configs/config.yaml
+  s_c29a9b9c98f25e::t_9ed45a1e1ba5af 1-74
+dags/recommendation_flow.py
+  s_c29a9b9c98f25e::t_056fadca06c5e1 1-109
+src/__init__.py
+  s_c29a9b9c98f25e::t_7d2a9a932205c2 1
+src/evaluation/evaluate.py
+  s_c29a9b9c98f25e::t_ab279a75e6a7c3 1-154
+src/features/feature_store.py
+  s_c29a9b9c98f25e::t_cd60c0db3a6a59 1-232
+src/features/registry.py
+  s_c29a9b9c98f25e::t_241fa2578bf790 1-69
+src/ingestion/ingest.py
+  s_c29a9b9c98f25e::t_483ffb6f3d7ce7 1-146
+src/pipeline.py
+  s_c29a9b9c98f25e::t_6a7004b8d21827 1-52
+src/predict.py
+  s_c29a9b9c98f25e::t_2459fdc76eacce 1-59
+src/preparation/prepare.py
+  s_c29a9b9c98f25e::t_0f82b982f0d13f 1-135
+src/training/models.py
+  s_c29a9b9c98f25e::t_a435f950b19a3e 1-309
+src/training/pyfunc.py
+  s_c29a9b9c98f25e::t_5fec6ecdfde4aa 1-19
+src/training/train.py
+  s_c29a9b9c98f25e::t_4319f1293f8c61 1-156
+src/transformation/transform.py
+  s_c29a9b9c98f25e::t_d9a4cde661e714 1-110
+src/utils/__init__.py
+  s_c29a9b9c98f25e::t_81245bace78b47 1-23
+src/utils/common.py
+  s_c29a9b9c98f25e::t_456ac1734423a2 1-104
+src/validation/validate.py
+  s_c29a9b9c98f25e::t_49bc7b36d63f62 1-299
+tests/test_metrics.py
+  s_c29a9b9c98f25e::t_17a2ebcaedda64 1-32
+tests/test_preparation_features.py
+  s_c29a9b9c98f25e::t_bfb984ce3bd244 1-57
+tests/test_validation.py
+  s_c29a9b9c98f25e::t_faac008f490c57 1-32
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7fd9e91dc768102076e7022f57b9a5a508adbd79",
+  "prompts": {},
+  "sessions": {
+    "s_3388bbc60cbc5c": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "f595790c-0833-4218-8aa8-acc44f3cf600",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "kgopagon <kgopagon@cisco.com>"
+    },
+    "s_c29a9b9c98f25e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "678f36c8-5777-4c63-b3a0-9fea109ad92a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "kgopagon <kgopagon@cisco.com>"
+    }
+  }
+}
