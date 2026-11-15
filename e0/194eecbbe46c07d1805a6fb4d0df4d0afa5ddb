@@ -1,0 +1,112 @@
+reports/build/architecture_diagram.py
+  s_c29a9b9c98f25e::t_3e90f9cb507153 1-14,16-57,60,62-74
+  s_c29a9b9c98f25e::t_35b0a0b526a0a2 58
+  s_c29a9b9c98f25e::t_73ca49b7e3cafe 59
+  s_c29a9b9c98f25e::t_48fccaedb310d1 61
+  s_c29a9b9c98f25e::t_d206163fcdf613 15
+src/features/feature_store.py
+  s_c29a9b9c98f25e::t_3323162d9bf8d0 201-223
+src/validation/validate.py
+  s_c29a9b9c98f25e::t_254383c81167c2 190,194-196
+  s_c29a9b9c98f25e::t_be2ca1f0ef396a 265-266,270,275-276
+  s_c29a9b9c98f25e::t_2ea44de30416b8 197-198
+reports/evidence.md
+  s_c29a9b9c98f25e::t_7580193af9dc62 1-122
+src/evaluation/evaluate.py
+  s_c29a9b9c98f25e::t_de23b8abfb16e9 101
+reports/model_comparison.md
+  s_c29a9b9c98f25e::t_6dc2c60d821cfb 71-74
+  s_c29a9b9c98f25e::t_096aef495f7611 1-70,75-83
+reports/build/ui_screenshots.py
+  s_c29a9b9c98f25e::t_74dfd3a206fb9a 68-74,76-90
+  s_c29a9b9c98f25e::t_aee9bdb9c7bc05 1-67,75,91-95
+reports/build/capture_console.sh
+  s_c29a9b9c98f25e::t_a920d43558c2e7 1-29
+reports/build/render_console.py
+  s_c29a9b9c98f25e::t_5a9f3d571137f8 1-81
+README.md
+  s_c29a9b9c98f25e::t_4dede129cf27ab 1-132,134-210
+  s_c29a9b9c98f25e::t_f28932fd9fccf7 133
+data/errors/interactions_errors.csv
+  s_c29a9b9c98f25e::t_75c23027cf6b8f 2-36
+data/errors/interactions_warnings.csv
+  s_c29a9b9c98f25e::t_b317f54796914c 2-26
+data/errors/items_errors.csv
+  s_c29a9b9c98f25e::t_0df54cb6e1f0ad 2
+data/errors/items_warnings.csv
+  s_c29a9b9c98f25e::t_5dbc30a85f574e 2-15
+data/errors/users_errors.csv
+  s_c29a9b9c98f25e::t_1f87d80f032a88 2-3
+data/errors/users_warnings.csv
+  s_c29a9b9c98f25e::t_6c264f9eef37e0 2-13
+data/features/train/metadata.json
+  s_c29a9b9c98f25e::t_e74437cce9b6c3 4
+data/features/validation/metadata.json
+  s_c29a9b9c98f25e::t_78e5b536efdc82 4
+data/raw/interactions.csv
+  s_c29a9b9c98f25e::t_c5326e16e25695 2-100056
+data/raw/items.csv
+  s_c29a9b9c98f25e::t_6f57440b93b39b 2-1692
+data/raw/users.csv
+  s_c29a9b9c98f25e::t_d0acbaa288a6e2 2-958
+models/registry.json
+  s_c29a9b9c98f25e::t_c019126097b525 4,11,19,26,37
+reports/evaluation_results.json
+  s_c29a9b9c98f25e::t_96bdd4fe4fbef3 4
+reports/evaluation_results.md
+  s_c29a9b9c98f25e::t_2fb359dcf369b0 14
+reports/feature_catalog.md
+  s_c29a9b9c98f25e::t_19945be790a151 42-68
+reports/feature_snapshots.json
+  s_c29a9b9c98f25e::t_44f7c3a6a3eaaf 5,18
+reports/ingestion_manifest.json
+  s_c29a9b9c98f25e::t_ec25412a813ca5 2-3,11,18,25
+reports/logs/console/data_layout.log
+  s_c29a9b9c98f25e::t_2b48a1f8d09dac 1-41
+reports/logs/console/errors_dataset.log
+  s_c29a9b9c98f25e::t_23b7ad57681397 1-30
+reports/logs/console/ingestion_manifest.log
+  s_c29a9b9c98f25e::t_8336a81beed184 1-29
+reports/logs/console/predict.log
+  s_c29a9b9c98f25e::t_51e9d162c0a6c5 1-31
+reports/logs/console/prefect_flow_run.log
+  s_c29a9b9c98f25e::t_ab14506e2685c2 1-115
+reports/logs/console/stage_evaluate.log
+  s_c29a9b9c98f25e::t_971dd2e820da78 1-22
+reports/logs/console/stage_features.log
+  s_c29a9b9c98f25e::t_3a8b92c3c751d1 1-18
+reports/logs/console/stage_ingest.log
+  s_c29a9b9c98f25e::t_537940960ea213 1-14
+reports/logs/console/stage_prepare.log
+  s_c29a9b9c98f25e::t_2945a6ddd69862 1-19
+reports/logs/console/stage_train.log
+  s_c29a9b9c98f25e::t_3fdc39f360bd6b 1-17
+reports/logs/console/stage_transform.log
+  s_c29a9b9c98f25e::t_66318496ac668f 1-8
+reports/logs/console/stage_validate.log
+  s_c29a9b9c98f25e::t_62a070cd46b2a9 1-33
+reports/logs/console/tests.log
+  s_c29a9b9c98f25e::t_735df4c6cc2165 1-17
+reports/logs/pipeline.log
+  s_c29a9b9c98f25e::t_4b155cf2ea7c8c 1-251
+reports/validation_report.json
+  s_c29a9b9c98f25e::t_b73326b1da4a74 2-3
+reports/validation_report.md
+  s_c29a9b9c98f25e::t_ff0ff14d944613 3-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "e0194eecbbe46c07d1805a6fb4d0df4d0afa5ddb",
+  "prompts": {},
+  "sessions": {
+    "s_c29a9b9c98f25e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "678f36c8-5777-4c63-b3a0-9fea109ad92a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "kgopagon <kgopagon@cisco.com>"
+    }
+  }
+}
