@@ -1,0 +1,34 @@
+README.md
+  s_c29a9b9c98f25e::t_82d70c2567db60 113
+reports/build/build_report.py
+  s_c29a9b9c98f25e::t_20460f8643a8b6 110
+  s_c29a9b9c98f25e::t_27999e5d105666 315
+  s_c29a9b9c98f25e::t_08aba4d1303794 91-92,94
+  s_c29a9b9c98f25e::t_32de7e3fe8d189 1-90,95-109,111-221,241,247-249,251-314,316-338
+  s_c29a9b9c98f25e::t_f1c1746a095114 242-246,250
+  s_c29a9b9c98f25e::t_d18b5e2913543d 93
+  s_c29a9b9c98f25e::t_7ddb18e06553bd 222-240
+reports/build/github_screenshot.py
+  s_c29a9b9c98f25e::t_d111fdd57852e5 1-13,15-18
+  s_c29a9b9c98f25e::t_469a8c8c795512 14
+reports/final_report.pdf
+  s_c29a9b9c98f25e::t_cf4265fe14512c 1-727
+reports/logs/pipeline.log
+  s_c29a9b9c98f25e::t_a383fedf6b66f5 252-259
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "2c57e1cdb079526fdf7e64aa836e734e79959794",
+  "prompts": {},
+  "sessions": {
+    "s_c29a9b9c98f25e": {
+      "agent_id": {
+        "tool": "cursor",
+        "id": "678f36c8-5777-4c63-b3a0-9fea109ad92a",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "kgopagon <kgopagon@cisco.com>"
+    }
+  }
+}
