@@ -1,0 +1,74 @@
+# Central configuration for the recommendation pipeline.
+# Every stage reads from this file so a run is fully described by (code version + config + seed).
+
+project:
+  name: movielens-recommendation-pipeline
+  seed: 42
+
+paths:
+  raw: data/raw
+  validated: data/processed/validated
+  errors: data/errors
+  processed: data/processed
+  derived: data/processed/derived
+  features: data/features
+  models: models
+  reports: reports
+  logs: reports/logs
+  mlflow_db: models/mlflow.db
+  mlflow_artifacts: models/mlruns
+
+ingestion:
+  source_url: https://files.grouplens.org/datasets/movielens/ml-100k.zip
+  archive_name: ml-100k.zip
+  # A small, documented set of corrupted records is appended to the raw extract so that
+  # the validation layer is exercised on realistic data-quality problems.
+  inject_anomalies: true
+  anomaly_seed: 7
+
+validation:
+  rating_min: 1
+  rating_max: 5
+  # MovieLens-100K was collected between Sep-1997 and Apr-1998.
+  timestamp_min: "1997-01-01"
+  timestamp_max: "1999-01-01"
+  age_min: 5
+  age_max: 100
+  valid_genders: [M, F]
+
+preparation:
+  # Time-based split: every interaction strictly after the cut-off goes to test.
+  test_fraction: 0.2
+  # Last slice of the training period used for hyper-parameter selection.
+  validation_fraction: 0.1
+  relevance_threshold: 4      # rating >= 4 is treated as a relevant (positive) interaction
+
+features:
+  bayesian_prior_count: 20    # m in the Bayesian average (shrinks items with few ratings)
+  min_genre_ratings: 3
+
+training:
+  k: 10
+  popularity:
+    min_ratings: 10
+  item_knn:
+    neighbours_grid: [20, 40, 80]
+    shrinkage: 10
+  pure_svd:
+    n_factors_grid: [10, 20, 50]
+  biased_mf:
+    search_space:
+      n_factors: [20, 50]
+      reg: [0.05, 0.1]
+    epochs: 40
+    lr: 0.01
+  hybrid:
+    # score = z(PureSVD) + knn_weight*z(item-kNN) + mf_weight*z(biased MF)
+    #         + content_weight*z(ui_genre_affinity) + pop_weight*z(log popularity)
+    knn_weight: [0.0, 0.5, 1.0]
+    mf_weight: [0.0, 0.25, 0.5]
+    content_weight: [0.0, 0.25, 0.5]
+    pop_weight: [0.0, 0.25]
+
+mlflow:
+  experiment: dm4ml-recommendation-pipeline

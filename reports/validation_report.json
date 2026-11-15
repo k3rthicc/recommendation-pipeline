@@ -1,0 +1,511 @@
+{
+  "generated_at": "2026-11-15T08:16:03.764313+00:00",
+  "batch_id": "20261115T081603-9badad",
+  "tables": {
+    "users": {
+      "input_rows": 957,
+      "valid_rows": 955,
+      "quarantined_rows": 2,
+      "rows_with_warnings": 12,
+      "pass_rate_pct": 99.791,
+      "rules": [
+        {
+          "table": "users",
+          "rule": "missing_user_id",
+          "severity": "error",
+          "description": "user_id is null/blank",
+          "failed_rows": 1,
+          "failed_pct": 0.1045
+        },
+        {
+          "table": "users",
+          "rule": "invalid_type_user_id",
+          "severity": "error",
+          "description": "user_id is not a positive integer",
+          "failed_rows": 1,
+          "failed_pct": 0.1045
+        },
+        {
+          "table": "users",
+          "rule": "missing_age",
+          "severity": "warning",
+          "description": "age is null/blank",
+          "failed_rows": 3,
+          "failed_pct": 0.3135
+        },
+        {
+          "table": "users",
+          "rule": "invalid_age",
+          "severity": "warning",
+          "description": "age outside [5, 100] or non-numeric",
+          "failed_rows": 2,
+          "failed_pct": 0.209
+        },
+        {
+          "table": "users",
+          "rule": "invalid_gender",
+          "severity": "warning",
+          "description": "gender not in ['M', 'F']",
+          "failed_rows": 2,
+          "failed_pct": 0.209
+        },
+        {
+          "table": "users",
+          "rule": "missing_occupation",
+          "severity": "warning",
+          "description": "occupation is null/blank",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "users",
+          "rule": "non_standard_occupation",
+          "severity": "warning",
+          "description": "occupation has whitespace/upper-case",
+          "failed_rows": 2,
+          "failed_pct": 0.209
+        },
+        {
+          "table": "users",
+          "rule": "missing_zip_code",
+          "severity": "warning",
+          "description": "zip_code is null/blank",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "users",
+          "rule": "exact_duplicate",
+          "severity": "warning",
+          "description": "Identical user record appears more than once",
+          "failed_rows": 3,
+          "failed_pct": 0.3135
+        },
+        {
+          "table": "users",
+          "rule": "conflicting_duplicate_key",
+          "severity": "warning",
+          "description": "Same user_id with different attribute values",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        }
+      ],
+      "schema_contract": "PASS",
+      "profile": [
+        {
+          "column": "user_id",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 952
+        },
+        {
+          "column": "age",
+          "dtype": "float64",
+          "nulls": 5,
+          "unique": 61
+        },
+        {
+          "column": "gender",
+          "dtype": "str",
+          "nulls": 0,
+          "unique": 3
+        },
+        {
+          "column": "occupation",
+          "dtype": "str",
+          "nulls": 0,
+          "unique": 23
+        },
+        {
+          "column": "zip_code",
+          "dtype": "str",
+          "nulls": 0,
+          "unique": 795
+        }
+      ]
+    },
+    "items": {
+      "input_rows": 1691,
+      "valid_rows": 1690,
+      "quarantined_rows": 1,
+      "rows_with_warnings": 14,
+      "pass_rate_pct": 99.941,
+      "rules": [
+        {
+          "table": "items",
+          "rule": "missing_item_id",
+          "severity": "error",
+          "description": "item_id is null/blank",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "items",
+          "rule": "invalid_type_item_id",
+          "severity": "error",
+          "description": "item_id is not a positive integer",
+          "failed_rows": 1,
+          "failed_pct": 0.0591
+        },
+        {
+          "table": "items",
+          "rule": "missing_title",
+          "severity": "error",
+          "description": "title is null/blank",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "items",
+          "rule": "invalid_genre_flags",
+          "severity": "error",
+          "description": "genre indicator not in {0,1}",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "items",
+          "rule": "missing_release_date",
+          "severity": "warning",
+          "description": "release_date is null/blank",
+          "failed_rows": 4,
+          "failed_pct": 0.2365
+        },
+        {
+          "table": "items",
+          "rule": "invalid_release_date",
+          "severity": "warning",
+          "description": "release_date not a valid DD-Mon-YYYY date",
+          "failed_rows": 1,
+          "failed_pct": 0.0591
+        },
+        {
+          "table": "items",
+          "rule": "non_standard_title",
+          "severity": "warning",
+          "description": "title has leading/trailing whitespace",
+          "failed_rows": 5,
+          "failed_pct": 0.2957
+        },
+        {
+          "table": "items",
+          "rule": "missing_imdb_url",
+          "severity": "warning",
+          "description": "imdb_url is null/blank",
+          "failed_rows": 3,
+          "failed_pct": 0.1774
+        },
+        {
+          "table": "items",
+          "rule": "exact_duplicate",
+          "severity": "warning",
+          "description": "Identical item record appears more than once",
+          "failed_rows": 2,
+          "failed_pct": 0.1183
+        },
+        {
+          "table": "items",
+          "rule": "conflicting_duplicate_key",
+          "severity": "warning",
+          "description": "Same item_id with different attribute values",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        }
+      ],
+      "schema_contract": "PASS",
+      "profile": [
+        {
+          "column": "item_id",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 1688
+        },
+        {
+          "column": "title",
+          "dtype": "str",
+          "nulls": 0,
+          "unique": 1666
+        },
+        {
+          "column": "release_date",
+          "dtype": "datetime64[ns]",
+          "nulls": 5,
+          "unique": 240
+        },
+        {
+          "column": "video_release_date",
+          "dtype": "str",
+          "nulls": 1690,
+          "unique": 0
+        },
+        {
+          "column": "imdb_url",
+          "dtype": "str",
+          "nulls": 3,
+          "unique": 1660
+        },
+        {
+          "column": "unknown",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Action",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Adventure",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Animation",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Children",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Comedy",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Crime",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Documentary",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Drama",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Fantasy",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Film-Noir",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Horror",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Musical",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Mystery",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Romance",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Sci-Fi",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Thriller",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "War",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        },
+        {
+          "column": "Western",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 2
+        }
+      ]
+    },
+    "interactions": {
+      "input_rows": 100055,
+      "valid_rows": 100020,
+      "quarantined_rows": 35,
+      "rows_with_warnings": 25,
+      "pass_rate_pct": 99.965,
+      "rules": [
+        {
+          "table": "interactions",
+          "rule": "missing_user_id",
+          "severity": "error",
+          "description": "user_id is null/blank",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "interactions",
+          "rule": "missing_item_id",
+          "severity": "error",
+          "description": "item_id is null/blank",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "interactions",
+          "rule": "missing_rating",
+          "severity": "error",
+          "description": "rating is null/blank",
+          "failed_rows": 4,
+          "failed_pct": 0.004
+        },
+        {
+          "table": "interactions",
+          "rule": "missing_timestamp",
+          "severity": "error",
+          "description": "timestamp is null/blank",
+          "failed_rows": 1,
+          "failed_pct": 0.001
+        },
+        {
+          "table": "interactions",
+          "rule": "invalid_type_user_id",
+          "severity": "error",
+          "description": "user_id is not an integer",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "interactions",
+          "rule": "invalid_type_item_id",
+          "severity": "error",
+          "description": "item_id is not an integer",
+          "failed_rows": 0,
+          "failed_pct": 0.0
+        },
+        {
+          "table": "interactions",
+          "rule": "invalid_type_rating",
+          "severity": "error",
+          "description": "rating is not numeric",
+          "failed_rows": 5,
+          "failed_pct": 0.005
+        },
+        {
+          "table": "interactions",
+          "rule": "invalid_rating",
+          "severity": "error",
+          "description": "rating not an integer in [1, 5]",
+          "failed_rows": 8,
+          "failed_pct": 0.008
+        },
+        {
+          "table": "interactions",
+          "rule": "invalid_timestamp",
+          "severity": "error",
+          "description": "timestamp non-numeric or outside [1997-01-01, 1999-01-01)",
+          "failed_rows": 5,
+          "failed_pct": 0.005
+        },
+        {
+          "table": "interactions",
+          "rule": "unknown_user_fk",
+          "severity": "error",
+          "description": "user_id not present in validated users (referential integrity)",
+          "failed_rows": 6,
+          "failed_pct": 0.006
+        },
+        {
+          "table": "interactions",
+          "rule": "unknown_item_fk",
+          "severity": "error",
+          "description": "item_id not present in validated items (referential integrity)",
+          "failed_rows": 6,
+          "failed_pct": 0.006
+        },
+        {
+          "table": "interactions",
+          "rule": "exact_duplicate",
+          "severity": "warning",
+          "description": "Identical interaction record appears more than once",
+          "failed_rows": 15,
+          "failed_pct": 0.015
+        },
+        {
+          "table": "interactions",
+          "rule": "conflicting_duplicate_key",
+          "severity": "warning",
+          "description": "Same user_id+item_id with different attribute values",
+          "failed_rows": 10,
+          "failed_pct": 0.01
+        }
+      ],
+      "schema_contract": "PASS",
+      "profile": [
+        {
+          "column": "user_id",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 943
+        },
+        {
+          "column": "item_id",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 1682
+        },
+        {
+          "column": "rating",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 5
+        },
+        {
+          "column": "timestamp",
+          "dtype": "int64",
+          "nulls": 0,
+          "unique": 49287
+        },
+        {
+          "column": "event_time",
+          "dtype": "datetime64[ns, UTC]",
+          "nulls": 0,
+          "unique": 49287
+        }
+      ]
+    }
+  },
+  "status": "PASS"
+}

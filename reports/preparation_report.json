@@ -1,0 +1,60 @@
+{
+  "cleaning_actions": {
+    "users_exact_duplicates_removed": 3,
+    "users_conflicting_keys_resolved": 0,
+    "users_gender_set_unknown": 2,
+    "users_age_imputed_by_occupation_median": 5,
+    "items_exact_duplicates_removed": 2,
+    "items_release_date_imputed_from_title_year": 4,
+    "items_release_date_still_missing": 1,
+    "items_columns_dropped": [
+      "video_release_date (100% null)"
+    ],
+    "interactions_exact_duplicates_removed": 15,
+    "interactions_conflicting_pairs_resolved_keep_latest": 5
+  },
+  "clean_rows": {
+    "users": 952,
+    "items": 1688,
+    "interactions": 100000
+  },
+  "split_strategy": "global temporal cut-off at the 80th timestamp percentile",
+  "test_split": {
+    "cutoff_utc": "1998-03-07T02:21:09+00:00",
+    "train_rows": 80003,
+    "test_rows": 19997,
+    "train_period": [
+      "1997-09-20T03:05:10+00:00",
+      "1998-03-07T02:21:09+00:00"
+    ],
+    "test_period": [
+      "1998-03-07T02:21:37+00:00",
+      "1998-04-22T23:10:38+00:00"
+    ],
+    "train_users": 751,
+    "test_users": 301,
+    "test_warm_users": 109,
+    "test_cold_start_users": 192,
+    "test_items_unseen_in_train": 66,
+    "test_relevant_interactions": 11302
+  },
+  "validation_split": {
+    "cutoff_utc": "1998-02-17T18:36:36+00:00",
+    "train_rows": 72002,
+    "test_rows": 8001,
+    "train_period": [
+      "1997-09-20T03:05:10+00:00",
+      "1998-02-17T18:36:08+00:00"
+    ],
+    "test_period": [
+      "1998-02-17T18:36:43+00:00",
+      "1998-03-07T02:21:09+00:00"
+    ],
+    "train_users": 690,
+    "test_users": 137,
+    "test_warm_users": 76,
+    "test_cold_start_users": 61,
+    "test_items_unseen_in_train": 25,
+    "test_relevant_interactions": 4138
+  }
+}

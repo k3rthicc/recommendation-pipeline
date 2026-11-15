@@ -1,0 +1,80 @@
+{
+  "models": {
+    "popularity": {
+      "run_id": "e0056f5caa774c449a8bd92978f9aab2",
+      "path": "models/popularity.pkl",
+      "params": {
+        "min_ratings": 10
+      }
+    },
+    "item_knn": {
+      "run_id": "68374543ff6e4e86a2adb4e1c3442273",
+      "path": "models/item_knn.pkl",
+      "params": {
+        "neighbours": 40,
+        "shrinkage": 10
+      }
+    },
+    "pure_svd": {
+      "run_id": "4a4faeddb8954880a17e5d31b7a574c2",
+      "path": "models/pure_svd.pkl",
+      "params": {
+        "n_factors": 10
+      }
+    },
+    "biased_mf": {
+      "run_id": "06ecaefa5d40485f85bb1d17569f7e79",
+      "path": "models/biased_mf.pkl",
+      "params": {
+        "n_factors": 50,
+        "reg": 0.1,
+        "lr": 0.01,
+        "epochs": 40,
+        "batch_size": 128
+      }
+    },
+    "hybrid": {
+      "run_id": "e68a5a5ba28844b8b043bc5ef79fa579",
+      "path": "models/hybrid.pkl",
+      "params": {
+        "knn_weight": 0.0,
+        "mf_weight": 0.5,
+        "content_weight": 0.0,
+        "pop_weight": 0.0,
+        "min_segment_users": 5,
+        "cold_start": "demographic segment popularity (age_bucket x gender)",
+        "rating_model": "biased_mf"
+      }
+    }
+  },
+  "feature_snapshot": "train",
+  "chosen_hyperparameters": {
+    "popularity": {
+      "min_ratings": 10
+    },
+    "item_knn": {
+      "neighbours": 40,
+      "shrinkage": 10
+    },
+    "pure_svd": {
+      "n_factors": 10
+    },
+    "biased_mf": {
+      "n_factors": 50,
+      "reg": 0.1,
+      "lr": 0.01,
+      "epochs": 40
+    },
+    "hybrid": {
+      "knn_weight": 0.0,
+      "mf_weight": 0.5,
+      "content_weight": 0.0,
+      "pop_weight": 0.0
+    }
+  },
+  "sample_users": [
+    1,
+    3,
+    4
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "chosen": {
+    "popularity": {
+      "min_ratings": 10
+    },
+    "item_knn": {
+      "neighbours": 40,
+      "shrinkage": 10
+    },
+    "pure_svd": {
+      "n_factors": 10
+    },
+    "biased_mf": {
+      "n_factors": 50,
+      "reg": 0.1,
+      "lr": 0.01,
+      "epochs": 40
+    },
+    "hybrid": {
+      "knn_weight": 0.0,
+      "mf_weight": 0.5,
+      "content_weight": 0.0,
+      "pop_weight": 0.0
+    }
+  },
+  "validation_metrics": {
+    "popularity": {
+      "precision_at_10": 0.16899224806201552,
+      "recall_at_10": 0.06155862605393487,
+      "ndcg_at_10": 0.18630402416981465,
+      "hit_rate_at_10": 0.5658914728682171,
+      "coverage_at_10": 0.04206161137440758,
+      "diversity_at_10": 0.7695900040173997,
+      "novelty_at_10": 7.814272995008665,
+      "warm_users": 68,
+      "warm_precision_at_10": 0.07058823529411765,
+      "warm_recall_at_10": 0.03921262375491225,
+      "warm_ndcg_at_10": 0.08206968086719993,
+      "cold_users": 61,
+      "cold_precision_at_10": 0.27868852459016386,
+      "cold_recall_at_10": 0.08646892369874698,
+      "cold_ndcg_at_10": 0.30249968555633594,
+      "eval_users": 129,
+      "rmse": 1.0537708712158513,
+      "mae": 0.8445650205040963,
+      "rmse_warm": 1.012636271358241
+    },
+    "item_knn": {
+      "precision_at_10": 0.16744186046511628,
+      "recall_at_10": 0.08966267694502038,
+      "ndcg_at_10": 0.19419867992260842,
+      "hit_rate_at_10": 0.627906976744186,
+      "coverage_at_10": 0.1178909952606635,
+      "diversity_at_10": 0.7741083809911553,
+      "novelty_at_10": 8.161260458373338,
+      "warm_users": 68,
+      "warm_precision_at_10": 0.06764705882352941,
+      "warm_recall_at_10": 0.09252766147476567,
+      "warm_ndcg_at_10": 0.09642648370713242,
+      "cold_users": 61,
+      "cold_precision_at_10": 0.27868852459016386,
+      "cold_recall_at_10": 0.08646892369874698,
+      "cold_ndcg_at_10": 0.3031906363595325,
+      "eval_users": 129,
+      "rmse": 1.087751748748544,
+      "mae": 0.8690189231892748,
+      "rmse_warm": 1.1497995922632729
+    },
+    "pure_svd": {
+      "precision_at_10": 0.1798449612403101,
+      "recall_at_10": 0.09970445441692748,
+      "ndcg_at_10": 0.2137745358164892,
+      "hit_rate_at_10": 0.6744186046511628,
+      "coverage_at_10": 0.13210900473933648,
+      "diversity_at_10": 0.7631360328532654,
+      "novelty_at_10": 8.162823740338192,
+      "warm_users": 68,
+      "warm_precision_at_10": 0.0911764705882353,
+      "warm_recall_at_10": 0.11157750403176589,
+      "warm_ndcg_at_10": 0.13356303385875923,
+      "cold_users": 61,
+      "cold_precision_at_10": 0.27868852459016386,
+      "cold_recall_at_10": 0.08646892369874698,
+      "cold_ndcg_at_10": 0.3031906363595325,
+      "eval_users": 129
+    },
+    "biased_mf": {
+      "precision_at_10": 0.15813953488372093,
+      "recall_at_10": 0.07526893085349695,
+      "ndcg_at_10": 0.17882197327147015,
+      "hit_rate_at_10": 0.5658914728682171,
+      "coverage_at_10": 0.058056872037914695,
+      "diversity_at_10": 0.7309206753533652,
+      "novelty_at_10": 9.503285054328991,
+      "warm_users": 68,
+      "warm_precision_at_10": 0.05,
+      "warm_recall_at_10": 0.06522187844819916,
+      "warm_ndcg_at_10": 0.06725596667776718,
+      "cold_users": 61,
+      "cold_precision_at_10": 0.27868852459016386,
+      "cold_recall_at_10": 0.08646892369874698,
+      "cold_ndcg_at_10": 0.3031906363595325,
+      "eval_users": 129,
+      "rmse": 1.0335355522840026,
+      "mae": 0.8247270509699665,
+      "rmse_warm": 0.953249048297004
+    },
+    "hybrid": {
+      "precision_at_10": 0.1930232558139535,
+      "recall_at_10": 0.09306020025354776,
+      "ndcg_at_10": 0.22631090485744143,
+      "hit_rate_at_10": 0.627906976744186,
+      "coverage_at_10": 0.125,
+      "diversity_at_10": 0.7110803927547628,
+      "novelty_at_10": 8.276998341996402,
+      "warm_users": 68,
+      "warm_precision_at_10": 0.0926470588235294,
+      "warm_recall_at_10": 0.1094415744257764,
+      "warm_ndcg_at_10": 0.13543054849358768,
+      "cold_users": 61,
+      "cold_precision_at_10": 0.3049180327868853,
+      "cold_recall_at_10": 0.07479899625827649,
+      "cold_ndcg_at_10": 0.3276201545745243,
+      "eval_users": 129,
+      "rmse": 1.0335355522840026,
+      "mae": 0.8247270509699665,
+      "rmse_warm": 0.953249048297004
+    }
+  }
+}

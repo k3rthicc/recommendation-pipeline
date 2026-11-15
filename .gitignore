@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+
+# large / regenerable artefacts (recreated by `make pipeline`)
+data/raw/ml-100k.zip
+data/raw/raw_store.db
+models/*.pkl
+models/mlruns/
+models/mlflow.db

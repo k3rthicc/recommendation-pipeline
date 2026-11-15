@@ -1,0 +1,13 @@
+{
+  "snapshot": "validation",
+  "as_of": "1998-02-17T18:36:36+00:00",
+  "created_at": "2026-11-15T08:16:08.000993+00:00",
+  "source_interactions": 72002,
+  "user_rows": 952,
+  "item_rows": 1688,
+  "cold_start_users": 262,
+  "n_user_features": 16,
+  "n_item_features": 30,
+  "n_user_item_features": 3,
+  "data_fingerprint": "8ad2974f0f6a03328303942a636581dd"
+}

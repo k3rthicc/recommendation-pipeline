@@ -1,0 +1,28 @@
+{
+  "batch_id": "20261115T081603-9badad",
+  "ingested_at": "2026-11-15T08:16:03.459559+00:00",
+  "source": "https://files.grouplens.org/datasets/movielens/ml-100k.zip",
+  "tables": {
+    "users": {
+      "file": "data/raw/users.csv",
+      "source_rows": 943,
+      "ingested_rows": 957,
+      "columns": 7,
+      "md5": "8731e8a4c321785468160493bc59df7f"
+    },
+    "items": {
+      "file": "data/raw/items.csv",
+      "source_rows": 1682,
+      "ingested_rows": 1691,
+      "columns": 26,
+      "md5": "83efecf98c5c0376184f27aba7cd957f"
+    },
+    "interactions": {
+      "file": "data/raw/interactions.csv",
+      "source_rows": 100000,
+      "ingested_rows": 100055,
+      "columns": 6,
+      "md5": "533ae3878d5415dc5d7d336307796ac9"
+    }
+  }
+}

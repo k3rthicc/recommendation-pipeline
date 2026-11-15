@@ -1,0 +1,16 @@
+model,user_id,rank_titles
+popularity,1,"Liar Liar (1997) | Scream (1996) | English Patient, The (1996) | Air Force One (1997) | Mission: Impossible (1996)"
+popularity,3,"Star Wars (1977) | Return of the Jedi (1983) | Fargo (1996) | Toy Story (1995) | English Patient, The (1996)"
+popularity,4,Star Wars (1977) | Return of the Jedi (1983) | Fargo (1996) | Liar Liar (1997) | Contact (1997)
+item_knn,1,E.T. the Extra-Terrestrial (1982) | Speed (1994) | True Lies (1994) | Schindler's List (1993) | Stand by Me (1986)
+item_knn,3,"Conspiracy Theory (1997) | Cop Land (1997) | In & Out (1997) | Evita (1996) | Edge, The (1997)"
+item_knn,4,Star Wars (1977) | Return of the Jedi (1983) | Fargo (1996) | Liar Liar (1997) | Contact (1997)
+pure_svd,1,"Trainspotting (1996) | Close Shave, A (1995) | Heathers (1989) | Batman (1989) | Schindler's List (1993)"
+pure_svd,3,"Titanic (1997) | English Patient, The (1996) | Conspiracy Theory (1997) | Full Monty, The (1997) | Saint, The (1997)"
+pure_svd,4,Star Wars (1977) | Return of the Jedi (1983) | Fargo (1996) | Liar Liar (1997) | Contact (1997)
+biased_mf,1,"Close Shave, A (1995) | Pather Panchali (1955) | Ran (1985) | Lawrence of Arabia (1962) | Casablanca (1942)"
+biased_mf,3,"Pather Panchali (1955) | Kaspar Hauser (1993) | Saint of Fort Washington, The (1993) | Casablanca (1942) | Wrong Trousers, The (1993)"
+biased_mf,4,Star Wars (1977) | Return of the Jedi (1983) | Fargo (1996) | Liar Liar (1997) | Contact (1997)
+hybrid,1,"Close Shave, A (1995) | Trainspotting (1996) | Heathers (1989) | Schindler's List (1993) | Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1963)"
+hybrid,3,"Titanic (1997) | English Patient, The (1996) | Conspiracy Theory (1997) | Full Monty, The (1997) | In & Out (1997)"
+hybrid,4,"Star Wars (1977) | Return of the Jedi (1983) | Pulp Fiction (1994) | Scream (1996) | Empire Strikes Back, The (1980)"

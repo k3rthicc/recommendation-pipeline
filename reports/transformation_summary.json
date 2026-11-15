@@ -1,0 +1,53 @@
+{
+  "source": "train split only (leak-free)",
+  "user_activity_summary": {
+    "rows": 751,
+    "median_interactions": 66.0
+  },
+  "item_popularity": {
+    "rows": 1688,
+    "items_with_ratings": 1616,
+    "top5": [
+      {
+        "title": "Star Wars (1977)",
+        "n_ratings": 473,
+        "bayesian_avg": 4.321196981482363
+      },
+      {
+        "title": "Return of the Jedi (1983)",
+        "n_ratings": 423,
+        "bayesian_avg": 3.9782169568189722
+      },
+      {
+        "title": "Fargo (1996)",
+        "n_ratings": 417,
+        "bayesian_avg": 4.124370965379416
+      },
+      {
+        "title": "Liar Liar (1997)",
+        "n_ratings": 396,
+        "bayesian_avg": 3.1643031535355886
+      },
+      {
+        "title": "Contact (1997)",
+        "n_ratings": 394,
+        "bayesian_avg": 3.802778047997113
+      }
+    ]
+  },
+  "item_genres": {
+    "rows": 2901
+  },
+  "daily_activity": {
+    "rows": 167
+  },
+  "user_item_matrix": {
+    "shape": [
+      952,
+      1688
+    ],
+    "nnz": 80003,
+    "density_pct": 4.978,
+    "sparsity_pct": 95.022
+  }
+}
