@@ -11,7 +11,7 @@ Evaluated users: 290 (98 warm, 192 cold-start).
 | biased_mf  |         0.2131 |      0.0774 |    0.2384 |        0.7138 |        0.0652 |         0.762  |       8.8751 |   1.0199 |   0.8203 |         0.0877 |         0.3153 |
 | hybrid     |         0.2586 |      0.0912 |    0.2878 |        0.7483 |        0.1469 |         0.6849 |       8.1583 |   1.0199 |   0.8203 |         0.1647 |         0.3507 |
 
-**Best model by NDCG@10: `hybrid`** (registered in MLflow as `movielens-recommender` v1).
+**Best model by NDCG@10: `hybrid`** (registered in MLflow as `movielens-recommender` v2).
 
 Personalised models (item-kNN, MF) use global popularity for cold-start users; the hybrid uses demographic segment popularity.
 Coverage = share of the catalogue recommended to at least one user; Diversity = 1 - mean pairwise genre cosine similarity within a list.

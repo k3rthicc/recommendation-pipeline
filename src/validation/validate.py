@@ -182,14 +182,18 @@ def apply_rules(name: str, df: pd.DataFrame, rules: list[Rule], dup_key: list[st
         "input_rows": len(df), "valid_rows": len(valid), "quarantined_rows": len(invalid),
         "rows_with_warnings": len(flagged), "pass_rate_pct": round(100 * len(valid) / len(df), 3), "rules": rule_summary,
     }
-    invalid.to_csv(path("errors", f"{name}_errors.csv"), index=False)
-    flagged.to_csv(path("errors", f"{name}_warnings.csv"), index=False)
     log.info("%-12s input=%-7d valid=%-7d quarantined=%-4d warnings=%d",
              name, len(df), len(valid), len(invalid), len(flagged))
     for r in rule_summary:
         if r["failed_rows"]:
             log.info("    [%-7s] %-28s failed=%d", r["severity"].upper(), r["rule"], r["failed_rows"])
+    stats["_flagged"] = flagged
     return valid, invalid, stats
+
+
+def quarantine(name: str, invalid: pd.DataFrame, stats: dict) -> None:
+    invalid.to_csv(path("errors", f"{name}_errors.csv"), index=False)
+    stats.pop("_flagged").to_csv(path("errors", f"{name}_warnings.csv"), index=False)
 
 
 def profile(df: pd.DataFrame) -> list[dict]:
@@ -258,16 +262,18 @@ def run() -> dict:
     raw = {t: pd.read_csv(path("raw", f"{t}.csv"), dtype=str, keep_default_na=False) for t in ["users", "items", "interactions"]}
     report = {"generated_at": datetime.now(timezone.utc).isoformat(), "batch_id": raw["users"]["_batch_id"].iloc[0], "tables": {}}
 
-    users_ok, _, u_stats = apply_rules("users", raw["users"], user_rules(raw["users"], cfg), ["user_id"])
-    items_ok, _, i_stats = apply_rules("items", raw["items"], item_rules(raw["items"], cfg), ["item_id"])
+    users_ok, users_bad, u_stats = apply_rules("users", raw["users"], user_rules(raw["users"], cfg), ["user_id"])
+    items_ok, items_bad, i_stats = apply_rules("items", raw["items"], item_rules(raw["items"], cfg), ["item_id"])
     users_ok, items_ok = coerce_users(users_ok, cfg), coerce_items(items_ok)
 
     inter = raw["interactions"]
-    inter_ok, _, x_stats = apply_rules(
+    inter_ok, inter_bad, x_stats = apply_rules(
         "interactions", inter, interaction_rules(inter, cfg, set(users_ok["user_id"]), set(items_ok["item_id"])),
         ["user_id", "item_id"],
     )
     inter_ok = coerce_interactions(inter_ok)
+    for name, bad, stats in [("users", users_bad, u_stats), ("items", items_bad, i_stats), ("interactions", inter_bad, x_stats)]:
+        quarantine(name, bad, stats)
 
     status = "PASS"
     for name, df, schema, stats in [

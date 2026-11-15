@@ -1,0 +1,30 @@
+$ wc -l data/errors/*.csv
+      36 data/errors/interactions_errors.csv
+      26 data/errors/interactions_warnings.csv
+       2 data/errors/items_errors.csv
+      15 data/errors/items_warnings.csv
+       3 data/errors/users_errors.csv
+      13 data/errors/users_warnings.csv
+      95 total
+
+$ cut -d, -f1-5,8 data/errors/interactions_errors.csv | head -20
+_raw_row,user_id,item_id,rating,timestamp,error_reasons
+100017,263,294,0,891297330,invalid_rating
+100018,255,234,6,883216448,invalid_rating
+100019,907,182,7,880159844,invalid_rating
+100020,303,458,-1,879467936,invalid_rating
+100021,774,228,10,888557237,invalid_rating
+100022,95,68,0,879196231,invalid_rating
+100023,782,254,6,891499660,invalid_rating
+100024,943,219,9,888639575,invalid_rating
+100025,256,185,five,882164696,invalid_type_rating
+100026,727,54,4.x,883711045,invalid_type_rating
+100027,399,1274,NA?,882350870,invalid_type_rating
+100028,880,69,abc,880175646,invalid_type_rating
+100029,943,585,*,888640250,invalid_type_rating
+100030,334,224,,891545020,missing_rating
+100031,606,215,,880923925,missing_rating
+100032,664,518,,876524290,missing_rating
+100033,491,319,,891184567,missing_rating
+100034,727,541,4,0,invalid_timestamp
+100035,314,411,4,2051222400,invalid_timestamp

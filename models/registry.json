@@ -1,14 +1,14 @@
 {
   "models": {
     "popularity": {
-      "run_id": "e0056f5caa774c449a8bd92978f9aab2",
+      "run_id": "c1e2c125ca8040adab49d8403c2ba177",
       "path": "models/popularity.pkl",
       "params": {
         "min_ratings": 10
       }
     },
     "item_knn": {
-      "run_id": "68374543ff6e4e86a2adb4e1c3442273",
+      "run_id": "685c5fe5d1cb4e18ba387fbe9803ad55",
       "path": "models/item_knn.pkl",
       "params": {
         "neighbours": 40,
@@ -16,14 +16,14 @@
       }
     },
     "pure_svd": {
-      "run_id": "4a4faeddb8954880a17e5d31b7a574c2",
+      "run_id": "77e28df5831b44928e87274e9d5c7c2d",
       "path": "models/pure_svd.pkl",
       "params": {
         "n_factors": 10
       }
     },
     "biased_mf": {
-      "run_id": "06ecaefa5d40485f85bb1d17569f7e79",
+      "run_id": "8a6c000e74e545858a8e8e26733de0d2",
       "path": "models/biased_mf.pkl",
       "params": {
         "n_factors": 50,
@@ -34,7 +34,7 @@
       }
     },
     "hybrid": {
-      "run_id": "e68a5a5ba28844b8b043bc5ef79fa579",
+      "run_id": "d610493bf5d04f6893177272aba20b35",
       "path": "models/hybrid.pkl",
       "params": {
         "knn_weight": 0.0,

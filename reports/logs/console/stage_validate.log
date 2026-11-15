@@ -1,0 +1,33 @@
+$ python -m src.pipeline --stage validate
+2026-11-15 13:49:06 | INFO    | pipeline               | ===== stage validate  started =====
+2026-11-15 13:49:06 | INFO    | validation             | users        input=957     valid=955     quarantined=2    warnings=12
+2026-11-15 13:49:06 | INFO    | validation             |     [ERROR  ] missing_user_id              failed=1
+2026-11-15 13:49:06 | INFO    | validation             |     [ERROR  ] invalid_type_user_id         failed=1
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] missing_age                  failed=3
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] invalid_age                  failed=2
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] invalid_gender               failed=2
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] non_standard_occupation      failed=2
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] exact_duplicate              failed=3
+2026-11-15 13:49:06 | INFO    | validation             | items        input=1691    valid=1690    quarantined=1    warnings=14
+2026-11-15 13:49:06 | INFO    | validation             |     [ERROR  ] invalid_type_item_id         failed=1
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] missing_release_date         failed=4
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] invalid_release_date         failed=1
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] non_standard_title           failed=5
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] missing_imdb_url             failed=3
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] exact_duplicate              failed=2
+2026-11-15 13:49:10 | INFO    | validation             | interactions input=100055  valid=100020  quarantined=35   warnings=25
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] missing_rating               failed=4
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] missing_timestamp            failed=1
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] invalid_type_rating          failed=5
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] invalid_rating               failed=8
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] invalid_timestamp            failed=5
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] unknown_user_fk              failed=6
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] unknown_item_fk              failed=6
+2026-11-15 13:49:10 | INFO    | validation             |     [WARNING] exact_duplicate              failed=15
+2026-11-15 13:49:10 | INFO    | validation             |     [WARNING] conflicting_duplicate_key    failed=10
+2026-11-15 13:49:10 | INFO    | validation             | Pandera schema contract for users        -> PASS
+2026-11-15 13:49:10 | INFO    | validation             | Pandera schema contract for items        -> PASS
+2026-11-15 13:49:10 | INFO    | validation             | Pandera schema contract for interactions -> PASS
+2026-11-15 13:49:10 | INFO    | validation             | Validation status=PASS; reports/validation_report.{json,md}; quarantined records in data/errors/
+2026-11-15 13:49:10 | INFO    | pipeline               | ===== stage validate  finished in 4.1s =====
+2026-11-15 13:49:10 | INFO    | pipeline               | Pipeline finished (validate) in 4.1s

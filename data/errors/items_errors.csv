@@ -1,2 +1,2 @@
 _raw_row,item_id,title,release_date,video_release_date,imdb_url,unknown,Action,Adventure,Animation,Children,Comedy,Crime,Documentary,Drama,Fantasy,Film-Noir,Horror,Musical,Mystery,Romance,Sci-Fi,Thriller,War,Western,_batch_id,_ingested_at,error_reasons,quarantined_at
-1692,X12,"Sunchaser, The (1996)",25-Oct-1996,,"http://us.imdb.com/M/title-exact?Sunchaser,%20The%20(1996)",0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,20261115T081603-9badad,2026-11-15T08:16:03.459562+00:00,invalid_type_item_id,2026-11-15T08:16:03.847740+00:00
+1692,X12,"Sunchaser, The (1996)",25-Oct-1996,,"http://us.imdb.com/M/title-exact?Sunchaser,%20The%20(1996)",0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,20261115T081946-4b2041,2026-11-15T08:19:46.308558+00:00,invalid_type_item_id,2026-11-15T08:19:46.756878+00:00

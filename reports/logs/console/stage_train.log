@@ -1,0 +1,17 @@
+$ python -m src.pipeline --stage train
+2026-11-15 13:49:15 | INFO    | pipeline               | ===== stage train     started =====
+2026/11/15 13:49:16 INFO mlflow.store.db.utils: Creating initial MLflow database tables...
+2026/11/15 13:49:16 INFO mlflow.store.db.utils: Updating database tables
+2026-11-15 13:49:17 | INFO    | training               | tune popularity  1 candidates -> best {'min_ratings': 10}  val ndcg_at_10=0.1863
+2026-11-15 13:49:17 | INFO    | training               | tune item_knn    3 candidates -> best {'neighbours': 40, 'shrinkage': 10}  val ndcg_at_10=0.1942
+2026-11-15 13:49:18 | INFO    | training               | tune pure_svd    3 candidates -> best {'n_factors': 10}  val ndcg_at_10=0.2138
+2026-11-15 13:49:27 | INFO    | training               | tune biased_mf   4 candidates -> best {'n_factors': 50, 'reg': 0.1, 'lr': 0.01, 'epochs': 40}  val rmse=1.0335
+2026-11-15 13:49:29 | INFO    | training               | tune hybrid     54 candidates -> best {'knn_weight': 0.0, 'mf_weight': 0.5, 'content_weight': 0.0, 'pop_weight': 0.0}  val ndcg_at_10=0.2263
+2026-11-15 13:49:32 | INFO    | training               | trained popularity  params={'min_ratings': 10} mlflow_run=5eaee424
+2026-11-15 13:49:32 | INFO    | training               | trained item_knn    params={'neighbours': 40, 'shrinkage': 10} mlflow_run=f4297714
+2026-11-15 13:49:32 | INFO    | training               | trained pure_svd    params={'n_factors': 10} mlflow_run=bd949201
+2026-11-15 13:49:32 | INFO    | training               | trained biased_mf   params={'n_factors': 50, 'reg': 0.1, 'lr': 0.01, 'epochs': 40, 'batch_size': 128} mlflow_run=821fb434
+2026-11-15 13:49:33 | INFO    | training               | trained hybrid      params={'knn_weight': 0.0, 'mf_weight': 0.5, 'content_weight': 0.0, 'pop_weight': 0.0, 'min_segment_users': 5, 'cold_start': 'demographic segment popularity (age_bucket x gender)', 'rating_model': 'biased_mf'} mlflow_run=995c38e1
+2026-11-15 13:49:33 | INFO    | training               | Model registry -> models/registry.json; MLflow experiment 'dm4ml-recommendation-pipeline' (sqlite:///models/mlflow.db)
+2026-11-15 13:49:33 | INFO    | pipeline               | ===== stage train     finished in 17.1s =====
+2026-11-15 13:49:33 | INFO    | pipeline               | Pipeline finished (train) in 17.1s

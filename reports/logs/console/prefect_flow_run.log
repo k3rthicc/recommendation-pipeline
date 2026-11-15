@@ -1,0 +1,115 @@
+$ PREFECT_API_URL=http://127.0.0.1:4200/api python dags/recommendation_flow.py
+13:49:46.233 | INFO    | Flow run 'sticky-scorpion' - Beginning flow run 'sticky-scorpion' for flow 'recommendation-pipeline'
+13:49:46.238 | INFO    | Flow run 'sticky-scorpion' - View at http://127.0.0.1:4200/runs/flow-run/11877f0f-803b-421c-8be5-50733522d957
+2026-11-15 13:49:46 | INFO    | ingestion              | Using cached archive ml-100k.zip
+2026-11-15 13:49:46 | INFO    | ingestion              | Archive md5=0e33842e24a9c977be4e0107933c0723 size=4.92 MB
+2026-11-15 13:49:46 | INFO    | ingestion              | Read source table users        rows=943     cols=5
+2026-11-15 13:49:46 | INFO    | ingestion              | Read source table items        rows=1682    cols=24
+2026-11-15 13:49:46 | INFO    | ingestion              | Read source table interactions rows=100000  cols=4
+2026-11-15 13:49:46 | INFO    | ingestion              | Injected 78 documented anomalous records: {'interactions': 55, 'items': 9, 'users': 14}
+2026-11-15 13:49:46 | INFO    | ingestion              | Wrote raw/users.csv rows=957 md5=755b85d906 and SQLite table raw_users
+2026-11-15 13:49:46 | INFO    | ingestion              | Wrote raw/items.csv rows=1691 md5=3273db1732 and SQLite table raw_items
+2026-11-15 13:49:46 | INFO    | ingestion              | Wrote raw/interactions.csv rows=100055 md5=0659faae06 and SQLite table raw_interactions
+2026-11-15 13:49:46 | INFO    | ingestion              | Ingestion complete. batch_id=20261115T081946-4b2041 manifest=reports/ingestion_manifest.json
+13:49:46.550 | INFO    | Task run '1-ingest-5e7' - Ingested tables: {'users': 957, 'items': 1691, 'interactions': 100055}
+13:49:46.551 | INFO    | Task run '1-ingest-5e7' - Finished in state Completed()
+2026-11-15 13:49:46 | INFO    | validation             | users        input=957     valid=955     quarantined=2    warnings=12
+2026-11-15 13:49:46 | INFO    | validation             |     [ERROR  ] missing_user_id              failed=1
+2026-11-15 13:49:46 | INFO    | validation             |     [ERROR  ] invalid_type_user_id         failed=1
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] missing_age                  failed=3
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] invalid_age                  failed=2
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] invalid_gender               failed=2
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] non_standard_occupation      failed=2
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] exact_duplicate              failed=3
+2026-11-15 13:49:46 | INFO    | validation             | items        input=1691    valid=1690    quarantined=1    warnings=14
+2026-11-15 13:49:46 | INFO    | validation             |     [ERROR  ] invalid_type_item_id         failed=1
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] missing_release_date         failed=4
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] invalid_release_date         failed=1
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] non_standard_title           failed=5
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] missing_imdb_url             failed=3
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] exact_duplicate              failed=2
+2026-11-15 13:49:50 | INFO    | validation             | interactions input=100055  valid=100020  quarantined=35   warnings=25
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] missing_rating               failed=4
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] missing_timestamp            failed=1
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] invalid_type_rating          failed=5
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] invalid_rating               failed=8
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] invalid_timestamp            failed=5
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] unknown_user_fk              failed=6
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] unknown_item_fk              failed=6
+2026-11-15 13:49:50 | INFO    | validation             |     [WARNING] exact_duplicate              failed=15
+2026-11-15 13:49:50 | INFO    | validation             |     [WARNING] conflicting_duplicate_key    failed=10
+2026-11-15 13:49:50 | INFO    | validation             | Pandera schema contract for users        -> PASS
+2026-11-15 13:49:50 | INFO    | validation             | Pandera schema contract for items        -> PASS
+2026-11-15 13:49:50 | INFO    | validation             | Pandera schema contract for interactions -> PASS
+2026-11-15 13:49:50 | INFO    | validation             | Validation status=PASS; reports/validation_report.{json,md}; quarantined records in data/errors/
+13:49:50.665 | INFO    | Task run '2-validate-0d0' - Finished in state Completed()
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: users_exact_duplicates_removed                       3
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: users_conflicting_keys_resolved                      0
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: users_gender_set_unknown                             2
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: users_age_imputed_by_occupation_median               5
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: items_exact_duplicates_removed                       2
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: items_release_date_imputed_from_title_year           4
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: items_release_date_still_missing                     1
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: items_columns_dropped                                ['video_release_date (100% null)']
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: interactions_exact_duplicates_removed                15
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: interactions_conflicting_pairs_resolved_keep_latest  5
+2026-11-15 13:49:50 | INFO    | preparation            | Clean tables -> users=952 items=1688 interactions=100000
+2026-11-15 13:49:51 | INFO    | preparation            | Time-based split @ 1998-03-07 : train=80003 (1997-09-20..1998-03-07) test=19997
+2026-11-15 13:49:51 | INFO    | preparation            | Test users=301 (warm=109, cold-start=192); relevant test interactions=11302
+2026-11-15 13:49:51 | INFO    | preparation            | Inner validation split @ 1998-02-17 : train_inner=72002 val=8001
+2026-11-15 13:49:51 | INFO    | preparation            | No leakage check passed: max(train.ts) < min(test.ts)
+13:49:51.051 | INFO    | Task run '3-prepare-cb3' - Finished in state Completed()
+2026-11-15 13:49:51 | INFO    | transformation         | user_activity_summary rows=751 (median interactions/user=66)
+2026-11-15 13:49:51 | INFO    | transformation         | item_popularity rows=1688; top-3: Star Wars (1977), Return of the Jedi (1983), Fargo (1996)
+2026-11-15 13:49:51 | INFO    | transformation         | item_genres (long) rows=2901; daily_activity rows=167
+2026-11-15 13:49:51 | INFO    | transformation         | user_item_matrix shape=(952, 1688) nnz=80003 sparsity=95.02%
+13:49:51.182 | INFO    | Task run '4-transform-37b' - Finished in state Completed()
+2026-11-15 13:49:51 | INFO    | features               | Snapshot validation as_of=1998-02-17 users=952 (cold=262) items=1688 fingerprint=8ad2974f0f
+2026-11-15 13:49:51 | INFO    | features               | Snapshot train      as_of=1998-03-07 users=952 (cold=201) items=1688 fingerprint=6f6c95e629
+2026-11-15 13:49:51 | INFO    | features               | Sample user features:
+         user_rating_count  user_avg_rating user_preferred_genre  user_days_since_last_interaction  user_mainstreamness
+user_id                                                                                                                
+1                      265             3.61                Drama                              5.84                 4.55
+2                       62             3.71                Drama                              2.97                 4.71
+3                       35             2.31               Comedy                              0.00                 4.20
+2026-11-15 13:49:51 | INFO    | features               | Sample user-item features:
+ user_id  item_id  ui_genre_affinity  ui_popularity_gap  ui_release_year_gap
+       1       50             -0.039              1.616              -12.413
+       1      100              0.074              1.490                7.587
+       2      181              0.122              1.335                1.339
+2026-11-15 13:49:51 | INFO    | features               | Feature catalog -> reports/feature_catalog.{md,csv} (49 registered features)
+13:49:51.522 | INFO    | Task run '5-features-213' - Finished in state Completed()
+2026-11-15 13:49:52 | INFO    | training               | tune popularity  1 candidates -> best {'min_ratings': 10}  val ndcg_at_10=0.1863
+2026-11-15 13:49:52 | INFO    | training               | tune item_knn    3 candidates -> best {'neighbours': 40, 'shrinkage': 10}  val ndcg_at_10=0.1942
+2026-11-15 13:49:53 | INFO    | training               | tune pure_svd    3 candidates -> best {'n_factors': 10}  val ndcg_at_10=0.2138
+2026-11-15 13:50:03 | INFO    | training               | tune biased_mf   4 candidates -> best {'n_factors': 50, 'reg': 0.1, 'lr': 0.01, 'epochs': 40}  val rmse=1.0335
+2026-11-15 13:50:05 | INFO    | training               | tune hybrid     54 candidates -> best {'knn_weight': 0.0, 'mf_weight': 0.5, 'content_weight': 0.0, 'pop_weight': 0.0}  val ndcg_at_10=0.2263
+2026-11-15 13:50:09 | INFO    | training               | trained popularity  params={'min_ratings': 10} mlflow_run=c1e2c125
+2026-11-15 13:50:09 | INFO    | training               | trained item_knn    params={'neighbours': 40, 'shrinkage': 10} mlflow_run=685c5fe5
+2026-11-15 13:50:09 | INFO    | training               | trained pure_svd    params={'n_factors': 10} mlflow_run=77e28df5
+2026-11-15 13:50:09 | INFO    | training               | trained biased_mf   params={'n_factors': 50, 'reg': 0.1, 'lr': 0.01, 'epochs': 40, 'batch_size': 128} mlflow_run=8a6c000e
+2026-11-15 13:50:09 | INFO    | training               | trained hybrid      params={'knn_weight': 0.0, 'mf_weight': 0.5, 'content_weight': 0.0, 'pop_weight': 0.0, 'min_segment_users': 5, 'cold_start': 'demographic segment popularity (age_bucket x gender)', 'rating_model': 'biased_mf'} mlflow_run=d610493b
+2026-11-15 13:50:09 | INFO    | training               | Model registry -> models/registry.json; MLflow experiment 'dm4ml-recommendation-pipeline' (sqlite:///models/mlflow.db)
+13:50:09.510 | INFO    | Task run '6-train-904' - Finished in state Completed()
+2026-11-15 13:50:09 | INFO    | evaluation             | popularity             P@10=0.2293 R@10=0.0847 NDCG@10=0.2537 Cov=0.046 Div=0.786 RMSE=1.0332 MAE=0.8354
+2026-11-15 13:50:09 | INFO    | evaluation             | item_knn               P@10=0.2266 R@10=0.0776 NDCG@10=0.2463 Cov=0.152 Div=0.782 RMSE=1.0464 MAE=0.8401
+2026-11-15 13:50:09 | INFO    | evaluation             | pure_svd               P@10=0.2369 R@10=0.0885 NDCG@10=0.2619 Cov=0.157 Div=0.774
+2026-11-15 13:50:09 | INFO    | evaluation             | biased_mf              P@10=0.2131 R@10=0.0774 NDCG@10=0.2384 Cov=0.065 Div=0.762 RMSE=1.0199 MAE=0.8203
+2026-11-15 13:50:09 | INFO    | evaluation             | hybrid                 P@10=0.2586 R@10=0.0912 NDCG@10=0.2878 Cov=0.147 Div=0.685 RMSE=1.0199 MAE=0.8203
+2026/11/15 13:50:10 WARNING mlflow.pyfunc: Passing a Python object as `python_model` causes it to be serialized using CloudPickle, it requires exercising caution as Python object serialization mechanisms may execute arbitrary code during deserialization.Consider using a file path (str or Path) instead. See https://mlflow.org/docs/latest/ml/model/models-from-code/ for details.
+2026/11/15 13:50:10 INFO mlflow.pyfunc: Inferring model signature from input example
+2026/11/15 13:50:10 WARNING mlflow.utils.environment: Failed to resolve installed pip version. ``pip`` will be added to conda.yaml environment spec without a version specifier.
+Registered model 'movielens-recommender' already exists. Creating a new version of this model...
+Created version '2' of model 'movielens-recommender'.
+2026-11-15 13:50:10 | INFO    | evaluation             | Results table:
+            precision@10  recall@10  ndcg@10  hit_rate@10  coverage@10  diversity@10  novelty@10    rmse     mae  warm_ndcg@10  cold_ndcg@10
+popularity        0.2293     0.0847   0.2537       0.7621       0.0456        0.7856      7.7793  1.0332  0.8354        0.1331        0.3153
+item_knn          0.2266     0.0776   0.2463       0.7483       0.1517        0.7824      8.0220  1.0464  0.8401        0.1111        0.3153
+pure_svd          0.2369     0.0885   0.2619       0.7724       0.1570        0.7738      8.0037     NaN     NaN        0.1573        0.3153
+biased_mf         0.2131     0.0774   0.2384       0.7138       0.0652        0.7620      8.8751  1.0199  0.8203        0.0877        0.3153
+hybrid            0.2586     0.0912   0.2878       0.7483       0.1469        0.6849      8.1583  1.0199  0.8203        0.1647        0.3507
+2026-11-15 13:50:10 | INFO    | evaluation             | Best model by NDCG@10: hybrid -> registered as movielens-recommender v2
+13:50:10.841 | INFO    | Task run '7-evaluate-1d3' - Finished in state Completed()
+13:50:10.889 | INFO    | Task run '8-publish-summary-34b' - Best model: hybrid (NDCG@10=0.2878)
+13:50:10.892 | INFO    | Task run '8-publish-summary-34b' - Finished in state Completed()
+13:50:10.913 | INFO    | Flow run 'sticky-scorpion' - Finished in state Completed()

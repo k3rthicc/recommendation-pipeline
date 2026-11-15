@@ -39,4 +39,30 @@ Snapshots are point-in-time: computed only from interactions at or before the sn
 
 **Total:** 16 user, 30 item (19 genre flags), 3 user-item features.
 
-Storage: `data/features/<snapshot>/{user_features,item_features,user_genre_profile}.parquet` + `metadata.json`.
+## Materialised snapshots
+
+| Snapshot | Built from | as_of (UTC) | Source interactions | Users (cold-start) | Items | Data fingerprint |
+|---|---|---|---:|---:|---:|---|
+| `validation` | `train_inner` split | 1998-02-17T18:36:36 | 72002 | 952 (262) | 1688 | `8ad2974f0f6a` |
+| `train` | `train` split | 1998-03-07T02:21:09 | 80003 | 952 (201) | 1688 | `6f6c95e62910` |
+
+- `validation` snapshot: used for hyper-parameter selection (models fit on `train_inner`, scored on `val`).
+- `train` snapshot: used for final training, test evaluation **and** serving (`src/predict.py`).
+
+## Storage and consistency guarantees
+
+- Storage: `data/features/<snapshot>/{user_features,item_features,user_genre_profile}.parquet` + `metadata.json`.
+- Point-in-time correctness: a snapshot only uses interactions with `timestamp <= as_of` (unit-tested in `tests/test_preparation_features.py`).
+- Registry check: materialisation fails if a column is produced that is not registered here, or a registered feature is missing.
+- Null policy: every feature is populated for users with history; for cold-start users only `user_days_since_last_interaction` is undefined (NaN) and all other features take documented defaults (count 0, global mean rating, `none` genre).
+
+## Usage (same API for training and prediction)
+
+```python
+from src.features.feature_store import FeatureStore
+fs = FeatureStore("train")
+fs.user_features([1, 945])                      # user entity features
+fs.item_features([50, 181])                     # item entity features
+fs.user_item_features([1, 1], [50, 181])        # on-demand pairwise features
+fs.genre_affinity_matrix(user_ids, item_ids)    # vectorised ui_genre_affinity used by the hybrid model
+```

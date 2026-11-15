@@ -198,7 +198,29 @@ def write_catalog() -> None:
         lines.append(f"| {i} | `{r['name']}` | {r['entity']} | {r['dtype']} | {r['description']} | `{r['logic']}` | {r['source']} | {r['used_by']} |")
     lines.append(f"| {len(other) + 1} | `genre_<g>` x {len(genre_rows)} | item | int | One-hot genre flags ({', '.join(GENRES)}) | one-hot | items | content model, diversity |")
     lines += ["", f"**Total:** {len(USER_FEATURES)} user, {len(ITEM_FEATURES)} item ({len(genre_rows)} genre flags), {len(USER_ITEM_FEATURES)} user-item features.",
-              "", "Storage: `data/features/<snapshot>/{user_features,item_features,user_genre_profile}.parquet` + `metadata.json`."]
+              "", "## Materialised snapshots", "",
+              "| Snapshot | Built from | as_of (UTC) | Source interactions | Users (cold-start) | Items | Data fingerprint |",
+              "|---|---|---|---:|---:|---:|---|"]
+    for snap, source in (("validation", "`train_inner` split"), ("train", "`train` split")):
+        meta_file = path("features", snap, "metadata.json")
+        if meta_file.exists():
+            m = read_json(meta_file)
+            lines.append(f"| `{snap}` | {source} | {m['as_of'][:19]} | {m['source_interactions']} | {m['user_rows']} ({m['cold_start_users']}) | {m['item_rows']} | `{m['data_fingerprint'][:12]}` |")
+    lines += ["", "- `validation` snapshot: used for hyper-parameter selection (models fit on `train_inner`, scored on `val`).",
+              "- `train` snapshot: used for final training, test evaluation **and** serving (`src/predict.py`).",
+              "", "## Storage and consistency guarantees", "",
+              "- Storage: `data/features/<snapshot>/{user_features,item_features,user_genre_profile}.parquet` + `metadata.json`.",
+              "- Point-in-time correctness: a snapshot only uses interactions with `timestamp <= as_of` (unit-tested in `tests/test_preparation_features.py`).",
+              "- Registry check: materialisation fails if a column is produced that is not registered here, or a registered feature is missing.",
+              "- Null policy: every feature is populated for users with history; for cold-start users only `user_days_since_last_interaction` is undefined (NaN) and all other features take documented defaults (count 0, global mean rating, `none` genre).",
+              "", "## Usage (same API for training and prediction)", "", "```python",
+              "from src.features.feature_store import FeatureStore",
+              "fs = FeatureStore(\"train\")",
+              "fs.user_features([1, 945])                      # user entity features",
+              "fs.item_features([50, 181])                     # item entity features",
+              "fs.user_item_features([1, 1], [50, 181])        # on-demand pairwise features",
+              "fs.genre_affinity_matrix(user_ids, item_ids)    # vectorised ui_genre_affinity used by the hybrid model",
+              "```"]
     path("reports", "feature_catalog.md").write_text("\n".join(lines))
 
 

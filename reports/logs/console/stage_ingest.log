@@ -1,0 +1,14 @@
+$ python -m src.pipeline --stage ingest
+2026-11-15 13:49:04 | INFO    | pipeline               | ===== stage ingest    started =====
+2026-11-15 13:49:04 | INFO    | ingestion              | Using cached archive ml-100k.zip
+2026-11-15 13:49:04 | INFO    | ingestion              | Archive md5=0e33842e24a9c977be4e0107933c0723 size=4.92 MB
+2026-11-15 13:49:04 | INFO    | ingestion              | Read source table users        rows=943     cols=5
+2026-11-15 13:49:04 | INFO    | ingestion              | Read source table items        rows=1682    cols=24
+2026-11-15 13:49:04 | INFO    | ingestion              | Read source table interactions rows=100000  cols=4
+2026-11-15 13:49:04 | INFO    | ingestion              | Injected 78 documented anomalous records: {'interactions': 55, 'items': 9, 'users': 14}
+2026-11-15 13:49:04 | INFO    | ingestion              | Wrote raw/users.csv rows=957 md5=d975b82f39 and SQLite table raw_users
+2026-11-15 13:49:04 | INFO    | ingestion              | Wrote raw/items.csv rows=1691 md5=900d73c66d and SQLite table raw_items
+2026-11-15 13:49:05 | INFO    | ingestion              | Wrote raw/interactions.csv rows=100055 md5=9e0be4c205 and SQLite table raw_interactions
+2026-11-15 13:49:05 | INFO    | ingestion              | Ingestion complete. batch_id=20261115T081904-036af1 manifest=reports/ingestion_manifest.json
+2026-11-15 13:49:05 | INFO    | pipeline               | ===== stage ingest    finished in 0.3s =====
+2026-11-15 13:49:05 | INFO    | pipeline               | Pipeline finished (ingest) in 0.3s

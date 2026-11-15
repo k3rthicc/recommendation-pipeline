@@ -1,0 +1,31 @@
+$ python -m src.predict --user-ids 1 945 --k 10
+2026-11-15 13:49:36 | INFO    | predict                | Model=hybrid  feature snapshot=train (as_of 1998-03-07)
+2026-11-15 13:49:36 | INFO    | predict                | User profiles from the feature store:
+         age gender  occupation  user_rating_count  user_avg_rating user_preferred_genre  is_cold_start
+user_id                                                                                                
+1         24      M  technician                265             3.61                Drama          False
+945       38      M   executive                  0             3.52                 none           True
+2026-11-15 13:49:36 | INFO    | predict                | Top-10 for user 1:
+ rank  item_id                                                                       title                       genres  item_bayesian_avg  item_rating_count  ui_genre_affinity
+    1      408                                                       Close Shave, A (1995)    Animation|Comedy|Thriller               4.36                 94             -0.084
+    2      475                                                        Trainspotting (1996)                        Drama               3.84                219              0.335
+    3      433                                                             Heathers (1989)                       Comedy               3.72                139             -0.160
+    4      318                                                     Schindler's List (1993)                    Drama|War               4.36                236              0.196
+    5      474 Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1963)                   Sci-Fi|War               4.19                154              0.192
+    6      275                                                Sense and Sensibility (1995)                Drama|Romance               3.96                219              0.298
+    7      483                                                           Casablanca (1942)            Drama|Romance|War               4.39                186              0.218
+    8      403                                                               Batman (1989) Action|Adventure|Crime|Drama               3.49                163             -0.158
+    9      357                                      One Flew Over the Cuckoo's Nest (1975)                        Drama               4.19                211              0.335
+   10      655                                                          Stand by Me (1986)       Adventure|Comedy|Drama               3.86                184             -0.145
+2026-11-15 13:49:36 | INFO    | predict                | Top-10 for user 945:
+ rank  item_id                            title                              genres  item_bayesian_avg  item_rating_count  ui_genre_affinity
+    1       50                 Star Wars (1977) Action|Adventure|Romance|Sci-Fi|War               4.32                473                0.0
+    2       98 Silence of the Lambs, The (1991)                      Drama|Thriller               4.28                313                0.0
+    3      100                     Fargo (1996)                Crime|Drama|Thriller               4.12                417                0.0
+    4      174   Raiders of the Lost Ark (1981)                    Action|Adventure               4.24                341                0.0
+    5      127            Godfather, The (1972)                  Action|Crime|Drama               4.26                332                0.0
+    6      258                   Contact (1997)                        Drama|Sci-Fi               3.80                394                0.0
+    7      181        Return of the Jedi (1983) Action|Adventure|Romance|Sci-Fi|War               3.98                423                0.0
+    8        1                 Toy Story (1995)           Animation|Children|Comedy               3.86                374                0.0
+    9      121    Independence Day (ID4) (1996)                   Action|Sci-Fi|War               3.44                366                0.0
+   10       56              Pulp Fiction (1994)                         Crime|Drama               4.05                329                0.0

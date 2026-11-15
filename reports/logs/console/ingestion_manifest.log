@@ -1,0 +1,29 @@
+$ cat reports/ingestion_manifest.json
+{
+  "batch_id": "20261115T081904-036af1",
+  "ingested_at": "2026-11-15T08:19:04.742145+00:00",
+  "source": "https://files.grouplens.org/datasets/movielens/ml-100k.zip",
+  "tables": {
+    "users": {
+      "file": "data/raw/users.csv",
+      "source_rows": 943,
+      "ingested_rows": 957,
+      "columns": 7,
+      "md5": "d975b82f394b352f96e13d1616653c7f"
+    },
+    "items": {
+      "file": "data/raw/items.csv",
+      "source_rows": 1682,
+      "ingested_rows": 1691,
+      "columns": 26,
+      "md5": "900d73c66d950a5e9398767aa587886e"
+    },
+    "interactions": {
+      "file": "data/raw/interactions.csv",
+      "source_rows": 100000,
+      "ingested_rows": 100055,
+      "columns": 6,
+      "md5": "9e0be4c205ddb4f12aaca97bf81de569"
+    }
+  }
+}

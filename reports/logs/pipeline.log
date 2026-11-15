@@ -1,0 +1,251 @@
+2026-11-15 13:49:04 | INFO    | pipeline               | ===== stage ingest    started =====
+2026-11-15 13:49:04 | INFO    | ingestion              | Using cached archive ml-100k.zip
+2026-11-15 13:49:04 | INFO    | ingestion              | Archive md5=0e33842e24a9c977be4e0107933c0723 size=4.92 MB
+2026-11-15 13:49:04 | INFO    | ingestion              | Read source table users        rows=943     cols=5
+2026-11-15 13:49:04 | INFO    | ingestion              | Read source table items        rows=1682    cols=24
+2026-11-15 13:49:04 | INFO    | ingestion              | Read source table interactions rows=100000  cols=4
+2026-11-15 13:49:04 | INFO    | ingestion              | Injected 78 documented anomalous records: {'interactions': 55, 'items': 9, 'users': 14}
+2026-11-15 13:49:04 | INFO    | ingestion              | Wrote raw/users.csv rows=957 md5=d975b82f39 and SQLite table raw_users
+2026-11-15 13:49:04 | INFO    | ingestion              | Wrote raw/items.csv rows=1691 md5=900d73c66d and SQLite table raw_items
+2026-11-15 13:49:05 | INFO    | ingestion              | Wrote raw/interactions.csv rows=100055 md5=9e0be4c205 and SQLite table raw_interactions
+2026-11-15 13:49:05 | INFO    | ingestion              | Ingestion complete. batch_id=20261115T081904-036af1 manifest=reports/ingestion_manifest.json
+2026-11-15 13:49:05 | INFO    | pipeline               | ===== stage ingest    finished in 0.3s =====
+2026-11-15 13:49:05 | INFO    | pipeline               | Pipeline finished (ingest) in 0.3s
+2026-11-15 13:49:06 | INFO    | pipeline               | ===== stage validate  started =====
+2026-11-15 13:49:06 | INFO    | validation             | users        input=957     valid=955     quarantined=2    warnings=12
+2026-11-15 13:49:06 | INFO    | validation             |     [ERROR  ] missing_user_id              failed=1
+2026-11-15 13:49:06 | INFO    | validation             |     [ERROR  ] invalid_type_user_id         failed=1
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] missing_age                  failed=3
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] invalid_age                  failed=2
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] invalid_gender               failed=2
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] non_standard_occupation      failed=2
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] exact_duplicate              failed=3
+2026-11-15 13:49:06 | INFO    | validation             | items        input=1691    valid=1690    quarantined=1    warnings=14
+2026-11-15 13:49:06 | INFO    | validation             |     [ERROR  ] invalid_type_item_id         failed=1
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] missing_release_date         failed=4
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] invalid_release_date         failed=1
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] non_standard_title           failed=5
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] missing_imdb_url             failed=3
+2026-11-15 13:49:06 | INFO    | validation             |     [WARNING] exact_duplicate              failed=2
+2026-11-15 13:49:10 | INFO    | validation             | interactions input=100055  valid=100020  quarantined=35   warnings=25
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] missing_rating               failed=4
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] missing_timestamp            failed=1
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] invalid_type_rating          failed=5
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] invalid_rating               failed=8
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] invalid_timestamp            failed=5
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] unknown_user_fk              failed=6
+2026-11-15 13:49:10 | INFO    | validation             |     [ERROR  ] unknown_item_fk              failed=6
+2026-11-15 13:49:10 | INFO    | validation             |     [WARNING] exact_duplicate              failed=15
+2026-11-15 13:49:10 | INFO    | validation             |     [WARNING] conflicting_duplicate_key    failed=10
+2026-11-15 13:49:10 | INFO    | validation             | Pandera schema contract for users        -> PASS
+2026-11-15 13:49:10 | INFO    | validation             | Pandera schema contract for items        -> PASS
+2026-11-15 13:49:10 | INFO    | validation             | Pandera schema contract for interactions -> PASS
+2026-11-15 13:49:10 | INFO    | validation             | Validation status=PASS; reports/validation_report.{json,md}; quarantined records in data/errors/
+2026-11-15 13:49:10 | INFO    | pipeline               | ===== stage validate  finished in 4.1s =====
+2026-11-15 13:49:10 | INFO    | pipeline               | Pipeline finished (validate) in 4.1s
+2026-11-15 13:49:11 | INFO    | pipeline               | ===== stage prepare   started =====
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: users_exact_duplicates_removed                       3
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: users_conflicting_keys_resolved                      0
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: users_gender_set_unknown                             2
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: users_age_imputed_by_occupation_median               5
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: items_exact_duplicates_removed                       2
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: items_release_date_imputed_from_title_year           4
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: items_release_date_still_missing                     1
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: items_columns_dropped                                ['video_release_date (100% null)']
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: interactions_exact_duplicates_removed                15
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: interactions_conflicting_pairs_resolved_keep_latest  5
+2026-11-15 13:49:11 | INFO    | preparation            | Clean tables -> users=952 items=1688 interactions=100000
+2026-11-15 13:49:11 | INFO    | preparation            | Time-based split @ 1998-03-07 : train=80003 (1997-09-20..1998-03-07) test=19997
+2026-11-15 13:49:11 | INFO    | preparation            | Test users=301 (warm=109, cold-start=192); relevant test interactions=11302
+2026-11-15 13:49:11 | INFO    | preparation            | Inner validation split @ 1998-02-17 : train_inner=72002 val=8001
+2026-11-15 13:49:11 | INFO    | preparation            | No leakage check passed: max(train.ts) < min(test.ts)
+2026-11-15 13:49:11 | INFO    | pipeline               | ===== stage prepare   finished in 0.2s =====
+2026-11-15 13:49:11 | INFO    | pipeline               | Pipeline finished (prepare) in 0.2s
+2026-11-15 13:49:12 | INFO    | pipeline               | ===== stage transform started =====
+2026-11-15 13:49:13 | INFO    | transformation         | user_activity_summary rows=751 (median interactions/user=66)
+2026-11-15 13:49:13 | INFO    | transformation         | item_popularity rows=1688; top-3: Star Wars (1977), Return of the Jedi (1983), Fargo (1996)
+2026-11-15 13:49:13 | INFO    | transformation         | item_genres (long) rows=2901; daily_activity rows=167
+2026-11-15 13:49:13 | INFO    | transformation         | user_item_matrix shape=(952, 1688) nnz=80003 sparsity=95.02%
+2026-11-15 13:49:13 | INFO    | pipeline               | ===== stage transform finished in 0.1s =====
+2026-11-15 13:49:13 | INFO    | pipeline               | Pipeline finished (transform) in 0.1s
+2026-11-15 13:49:14 | INFO    | pipeline               | ===== stage features  started =====
+2026-11-15 13:49:14 | INFO    | features               | Snapshot validation as_of=1998-02-17 users=952 (cold=262) items=1688 fingerprint=8ad2974f0f
+2026-11-15 13:49:14 | INFO    | features               | Snapshot train      as_of=1998-03-07 users=952 (cold=201) items=1688 fingerprint=6f6c95e629
+2026-11-15 13:49:14 | INFO    | features               | Sample user features:
+         user_rating_count  user_avg_rating user_preferred_genre  user_days_since_last_interaction  user_mainstreamness
+user_id                                                                                                                
+1                      265             3.61                Drama                              5.84                 4.55
+2                       62             3.71                Drama                              2.97                 4.71
+3                       35             2.31               Comedy                              0.00                 4.20
+2026-11-15 13:49:14 | INFO    | features               | Sample user-item features:
+ user_id  item_id  ui_genre_affinity  ui_popularity_gap  ui_release_year_gap
+       1       50             -0.039              1.616              -12.413
+       1      100              0.074              1.490                7.587
+       2      181              0.122              1.335                1.339
+2026-11-15 13:49:14 | INFO    | features               | Feature catalog -> reports/feature_catalog.{md,csv} (49 registered features)
+2026-11-15 13:49:14 | INFO    | pipeline               | ===== stage features  finished in 0.4s =====
+2026-11-15 13:49:14 | INFO    | pipeline               | Pipeline finished (features) in 0.4s
+2026-11-15 13:49:15 | INFO    | pipeline               | ===== stage train     started =====
+2026-11-15 13:49:17 | INFO    | training               | tune popularity  1 candidates -> best {'min_ratings': 10}  val ndcg_at_10=0.1863
+2026-11-15 13:49:17 | INFO    | training               | tune item_knn    3 candidates -> best {'neighbours': 40, 'shrinkage': 10}  val ndcg_at_10=0.1942
+2026-11-15 13:49:18 | INFO    | training               | tune pure_svd    3 candidates -> best {'n_factors': 10}  val ndcg_at_10=0.2138
+2026-11-15 13:49:27 | INFO    | training               | tune biased_mf   4 candidates -> best {'n_factors': 50, 'reg': 0.1, 'lr': 0.01, 'epochs': 40}  val rmse=1.0335
+2026-11-15 13:49:29 | INFO    | training               | tune hybrid     54 candidates -> best {'knn_weight': 0.0, 'mf_weight': 0.5, 'content_weight': 0.0, 'pop_weight': 0.0}  val ndcg_at_10=0.2263
+2026-11-15 13:49:32 | INFO    | training               | trained popularity  params={'min_ratings': 10} mlflow_run=5eaee424
+2026-11-15 13:49:32 | INFO    | training               | trained item_knn    params={'neighbours': 40, 'shrinkage': 10} mlflow_run=f4297714
+2026-11-15 13:49:32 | INFO    | training               | trained pure_svd    params={'n_factors': 10} mlflow_run=bd949201
+2026-11-15 13:49:32 | INFO    | training               | trained biased_mf   params={'n_factors': 50, 'reg': 0.1, 'lr': 0.01, 'epochs': 40, 'batch_size': 128} mlflow_run=821fb434
+2026-11-15 13:49:33 | INFO    | training               | trained hybrid      params={'knn_weight': 0.0, 'mf_weight': 0.5, 'content_weight': 0.0, 'pop_weight': 0.0, 'min_segment_users': 5, 'cold_start': 'demographic segment popularity (age_bucket x gender)', 'rating_model': 'biased_mf'} mlflow_run=995c38e1
+2026-11-15 13:49:33 | INFO    | training               | Model registry -> models/registry.json; MLflow experiment 'dm4ml-recommendation-pipeline' (sqlite:///models/mlflow.db)
+2026-11-15 13:49:33 | INFO    | pipeline               | ===== stage train     finished in 17.1s =====
+2026-11-15 13:49:33 | INFO    | pipeline               | Pipeline finished (train) in 17.1s
+2026-11-15 13:49:34 | INFO    | pipeline               | ===== stage evaluate  started =====
+2026-11-15 13:49:35 | INFO    | evaluation             | popularity             P@10=0.2293 R@10=0.0847 NDCG@10=0.2537 Cov=0.046 Div=0.786 RMSE=1.0332 MAE=0.8354
+2026-11-15 13:49:35 | INFO    | evaluation             | item_knn               P@10=0.2266 R@10=0.0776 NDCG@10=0.2463 Cov=0.152 Div=0.782 RMSE=1.0464 MAE=0.8401
+2026-11-15 13:49:35 | INFO    | evaluation             | pure_svd               P@10=0.2369 R@10=0.0885 NDCG@10=0.2619 Cov=0.157 Div=0.774
+2026-11-15 13:49:35 | INFO    | evaluation             | biased_mf              P@10=0.2131 R@10=0.0774 NDCG@10=0.2384 Cov=0.065 Div=0.762 RMSE=1.0199 MAE=0.8203
+2026-11-15 13:49:35 | INFO    | evaluation             | hybrid                 P@10=0.2586 R@10=0.0912 NDCG@10=0.2878 Cov=0.147 Div=0.685 RMSE=1.0199 MAE=0.8203
+2026-11-15 13:49:36 | INFO    | evaluation             | Results table:
+            precision@10  recall@10  ndcg@10  hit_rate@10  coverage@10  diversity@10  novelty@10    rmse     mae  warm_ndcg@10  cold_ndcg@10
+popularity        0.2293     0.0847   0.2537       0.7621       0.0456        0.7856      7.7793  1.0332  0.8354        0.1331        0.3153
+item_knn          0.2266     0.0776   0.2463       0.7483       0.1517        0.7824      8.0220  1.0464  0.8401        0.1111        0.3153
+pure_svd          0.2369     0.0885   0.2619       0.7724       0.1570        0.7738      8.0037     NaN     NaN        0.1573        0.3153
+biased_mf         0.2131     0.0774   0.2384       0.7138       0.0652        0.7620      8.8751  1.0199  0.8203        0.0877        0.3153
+hybrid            0.2586     0.0912   0.2878       0.7483       0.1469        0.6849      8.1583  1.0199  0.8203        0.1647        0.3507
+2026-11-15 13:49:36 | INFO    | evaluation             | Best model by NDCG@10: hybrid -> registered as movielens-recommender v1
+2026-11-15 13:49:36 | INFO    | pipeline               | ===== stage evaluate  finished in 1.5s =====
+2026-11-15 13:49:36 | INFO    | pipeline               | Pipeline finished (evaluate) in 1.5s
+2026-11-15 13:49:36 | INFO    | predict                | Model=hybrid  feature snapshot=train (as_of 1998-03-07)
+2026-11-15 13:49:36 | INFO    | predict                | User profiles from the feature store:
+         age gender  occupation  user_rating_count  user_avg_rating user_preferred_genre  is_cold_start
+user_id                                                                                                
+1         24      M  technician                265             3.61                Drama          False
+945       38      M   executive                  0             3.52                 none           True
+2026-11-15 13:49:36 | INFO    | predict                | Top-10 for user 1:
+ rank  item_id                                                                       title                       genres  item_bayesian_avg  item_rating_count  ui_genre_affinity
+    1      408                                                       Close Shave, A (1995)    Animation|Comedy|Thriller               4.36                 94             -0.084
+    2      475                                                        Trainspotting (1996)                        Drama               3.84                219              0.335
+    3      433                                                             Heathers (1989)                       Comedy               3.72                139             -0.160
+    4      318                                                     Schindler's List (1993)                    Drama|War               4.36                236              0.196
+    5      474 Dr. Strangelove or: How I Learned to Stop Worrying and Love the Bomb (1963)                   Sci-Fi|War               4.19                154              0.192
+    6      275                                                Sense and Sensibility (1995)                Drama|Romance               3.96                219              0.298
+    7      483                                                           Casablanca (1942)            Drama|Romance|War               4.39                186              0.218
+    8      403                                                               Batman (1989) Action|Adventure|Crime|Drama               3.49                163             -0.158
+    9      357                                      One Flew Over the Cuckoo's Nest (1975)                        Drama               4.19                211              0.335
+   10      655                                                          Stand by Me (1986)       Adventure|Comedy|Drama               3.86                184             -0.145
+2026-11-15 13:49:36 | INFO    | predict                | Top-10 for user 945:
+ rank  item_id                            title                              genres  item_bayesian_avg  item_rating_count  ui_genre_affinity
+    1       50                 Star Wars (1977) Action|Adventure|Romance|Sci-Fi|War               4.32                473                0.0
+    2       98 Silence of the Lambs, The (1991)                      Drama|Thriller               4.28                313                0.0
+    3      100                     Fargo (1996)                Crime|Drama|Thriller               4.12                417                0.0
+    4      174   Raiders of the Lost Ark (1981)                    Action|Adventure               4.24                341                0.0
+    5      127            Godfather, The (1972)                  Action|Crime|Drama               4.26                332                0.0
+    6      258                   Contact (1997)                        Drama|Sci-Fi               3.80                394                0.0
+    7      181        Return of the Jedi (1983) Action|Adventure|Romance|Sci-Fi|War               3.98                423                0.0
+    8        1                 Toy Story (1995)           Animation|Children|Comedy               3.86                374                0.0
+    9      121    Independence Day (ID4) (1996)                   Action|Sci-Fi|War               3.44                366                0.0
+   10       56              Pulp Fiction (1994)                         Crime|Drama               4.05                329                0.0
+2026-11-15 13:49:37 | INFO    | validation             | interactions input=8       valid=2       quarantined=6    warnings=1
+2026-11-15 13:49:37 | INFO    | validation             |     [ERROR  ] missing_rating               failed=1
+2026-11-15 13:49:37 | INFO    | validation             |     [ERROR  ] invalid_type_rating          failed=1
+2026-11-15 13:49:37 | INFO    | validation             |     [ERROR  ] invalid_rating               failed=1
+2026-11-15 13:49:37 | INFO    | validation             |     [ERROR  ] invalid_timestamp            failed=1
+2026-11-15 13:49:37 | INFO    | validation             |     [ERROR  ] unknown_user_fk              failed=1
+2026-11-15 13:49:37 | INFO    | validation             |     [ERROR  ] unknown_item_fk              failed=1
+2026-11-15 13:49:37 | INFO    | validation             |     [WARNING] exact_duplicate              failed=1
+2026-11-15 13:49:46 | INFO    | ingestion              | Using cached archive ml-100k.zip
+2026-11-15 13:49:46 | INFO    | ingestion              | Archive md5=0e33842e24a9c977be4e0107933c0723 size=4.92 MB
+2026-11-15 13:49:46 | INFO    | ingestion              | Read source table users        rows=943     cols=5
+2026-11-15 13:49:46 | INFO    | ingestion              | Read source table items        rows=1682    cols=24
+2026-11-15 13:49:46 | INFO    | ingestion              | Read source table interactions rows=100000  cols=4
+2026-11-15 13:49:46 | INFO    | ingestion              | Injected 78 documented anomalous records: {'interactions': 55, 'items': 9, 'users': 14}
+2026-11-15 13:49:46 | INFO    | ingestion              | Wrote raw/users.csv rows=957 md5=755b85d906 and SQLite table raw_users
+2026-11-15 13:49:46 | INFO    | ingestion              | Wrote raw/items.csv rows=1691 md5=3273db1732 and SQLite table raw_items
+2026-11-15 13:49:46 | INFO    | ingestion              | Wrote raw/interactions.csv rows=100055 md5=0659faae06 and SQLite table raw_interactions
+2026-11-15 13:49:46 | INFO    | ingestion              | Ingestion complete. batch_id=20261115T081946-4b2041 manifest=reports/ingestion_manifest.json
+2026-11-15 13:49:46 | INFO    | validation             | users        input=957     valid=955     quarantined=2    warnings=12
+2026-11-15 13:49:46 | INFO    | validation             |     [ERROR  ] missing_user_id              failed=1
+2026-11-15 13:49:46 | INFO    | validation             |     [ERROR  ] invalid_type_user_id         failed=1
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] missing_age                  failed=3
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] invalid_age                  failed=2
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] invalid_gender               failed=2
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] non_standard_occupation      failed=2
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] exact_duplicate              failed=3
+2026-11-15 13:49:46 | INFO    | validation             | items        input=1691    valid=1690    quarantined=1    warnings=14
+2026-11-15 13:49:46 | INFO    | validation             |     [ERROR  ] invalid_type_item_id         failed=1
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] missing_release_date         failed=4
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] invalid_release_date         failed=1
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] non_standard_title           failed=5
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] missing_imdb_url             failed=3
+2026-11-15 13:49:46 | INFO    | validation             |     [WARNING] exact_duplicate              failed=2
+2026-11-15 13:49:50 | INFO    | validation             | interactions input=100055  valid=100020  quarantined=35   warnings=25
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] missing_rating               failed=4
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] missing_timestamp            failed=1
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] invalid_type_rating          failed=5
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] invalid_rating               failed=8
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] invalid_timestamp            failed=5
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] unknown_user_fk              failed=6
+2026-11-15 13:49:50 | INFO    | validation             |     [ERROR  ] unknown_item_fk              failed=6
+2026-11-15 13:49:50 | INFO    | validation             |     [WARNING] exact_duplicate              failed=15
+2026-11-15 13:49:50 | INFO    | validation             |     [WARNING] conflicting_duplicate_key    failed=10
+2026-11-15 13:49:50 | INFO    | validation             | Pandera schema contract for users        -> PASS
+2026-11-15 13:49:50 | INFO    | validation             | Pandera schema contract for items        -> PASS
+2026-11-15 13:49:50 | INFO    | validation             | Pandera schema contract for interactions -> PASS
+2026-11-15 13:49:50 | INFO    | validation             | Validation status=PASS; reports/validation_report.{json,md}; quarantined records in data/errors/
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: users_exact_duplicates_removed                       3
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: users_conflicting_keys_resolved                      0
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: users_gender_set_unknown                             2
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: users_age_imputed_by_occupation_median               5
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: items_exact_duplicates_removed                       2
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: items_release_date_imputed_from_title_year           4
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: items_release_date_still_missing                     1
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: items_columns_dropped                                ['video_release_date (100% null)']
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: interactions_exact_duplicates_removed                15
+2026-11-15 13:49:50 | INFO    | preparation            | cleaning: interactions_conflicting_pairs_resolved_keep_latest  5
+2026-11-15 13:49:50 | INFO    | preparation            | Clean tables -> users=952 items=1688 interactions=100000
+2026-11-15 13:49:51 | INFO    | preparation            | Time-based split @ 1998-03-07 : train=80003 (1997-09-20..1998-03-07) test=19997
+2026-11-15 13:49:51 | INFO    | preparation            | Test users=301 (warm=109, cold-start=192); relevant test interactions=11302
+2026-11-15 13:49:51 | INFO    | preparation            | Inner validation split @ 1998-02-17 : train_inner=72002 val=8001
+2026-11-15 13:49:51 | INFO    | preparation            | No leakage check passed: max(train.ts) < min(test.ts)
+2026-11-15 13:49:51 | INFO    | transformation         | user_activity_summary rows=751 (median interactions/user=66)
+2026-11-15 13:49:51 | INFO    | transformation         | item_popularity rows=1688; top-3: Star Wars (1977), Return of the Jedi (1983), Fargo (1996)
+2026-11-15 13:49:51 | INFO    | transformation         | item_genres (long) rows=2901; daily_activity rows=167
+2026-11-15 13:49:51 | INFO    | transformation         | user_item_matrix shape=(952, 1688) nnz=80003 sparsity=95.02%
+2026-11-15 13:49:51 | INFO    | features               | Snapshot validation as_of=1998-02-17 users=952 (cold=262) items=1688 fingerprint=8ad2974f0f
+2026-11-15 13:49:51 | INFO    | features               | Snapshot train      as_of=1998-03-07 users=952 (cold=201) items=1688 fingerprint=6f6c95e629
+2026-11-15 13:49:51 | INFO    | features               | Sample user features:
+         user_rating_count  user_avg_rating user_preferred_genre  user_days_since_last_interaction  user_mainstreamness
+user_id                                                                                                                
+1                      265             3.61                Drama                              5.84                 4.55
+2                       62             3.71                Drama                              2.97                 4.71
+3                       35             2.31               Comedy                              0.00                 4.20
+2026-11-15 13:49:51 | INFO    | features               | Sample user-item features:
+ user_id  item_id  ui_genre_affinity  ui_popularity_gap  ui_release_year_gap
+       1       50             -0.039              1.616              -12.413
+       1      100              0.074              1.490                7.587
+       2      181              0.122              1.335                1.339
+2026-11-15 13:49:51 | INFO    | features               | Feature catalog -> reports/feature_catalog.{md,csv} (49 registered features)
+2026-11-15 13:49:52 | INFO    | training               | tune popularity  1 candidates -> best {'min_ratings': 10}  val ndcg_at_10=0.1863
+2026-11-15 13:49:52 | INFO    | training               | tune item_knn    3 candidates -> best {'neighbours': 40, 'shrinkage': 10}  val ndcg_at_10=0.1942
+2026-11-15 13:49:53 | INFO    | training               | tune pure_svd    3 candidates -> best {'n_factors': 10}  val ndcg_at_10=0.2138
+2026-11-15 13:50:03 | INFO    | training               | tune biased_mf   4 candidates -> best {'n_factors': 50, 'reg': 0.1, 'lr': 0.01, 'epochs': 40}  val rmse=1.0335
+2026-11-15 13:50:05 | INFO    | training               | tune hybrid     54 candidates -> best {'knn_weight': 0.0, 'mf_weight': 0.5, 'content_weight': 0.0, 'pop_weight': 0.0}  val ndcg_at_10=0.2263
+2026-11-15 13:50:09 | INFO    | training               | trained popularity  params={'min_ratings': 10} mlflow_run=c1e2c125
+2026-11-15 13:50:09 | INFO    | training               | trained item_knn    params={'neighbours': 40, 'shrinkage': 10} mlflow_run=685c5fe5
+2026-11-15 13:50:09 | INFO    | training               | trained pure_svd    params={'n_factors': 10} mlflow_run=77e28df5
+2026-11-15 13:50:09 | INFO    | training               | trained biased_mf   params={'n_factors': 50, 'reg': 0.1, 'lr': 0.01, 'epochs': 40, 'batch_size': 128} mlflow_run=8a6c000e
+2026-11-15 13:50:09 | INFO    | training               | trained hybrid      params={'knn_weight': 0.0, 'mf_weight': 0.5, 'content_weight': 0.0, 'pop_weight': 0.0, 'min_segment_users': 5, 'cold_start': 'demographic segment popularity (age_bucket x gender)', 'rating_model': 'biased_mf'} mlflow_run=d610493b
+2026-11-15 13:50:09 | INFO    | training               | Model registry -> models/registry.json; MLflow experiment 'dm4ml-recommendation-pipeline' (sqlite:///models/mlflow.db)
+2026-11-15 13:50:09 | INFO    | evaluation             | popularity             P@10=0.2293 R@10=0.0847 NDCG@10=0.2537 Cov=0.046 Div=0.786 RMSE=1.0332 MAE=0.8354
+2026-11-15 13:50:09 | INFO    | evaluation             | item_knn               P@10=0.2266 R@10=0.0776 NDCG@10=0.2463 Cov=0.152 Div=0.782 RMSE=1.0464 MAE=0.8401
+2026-11-15 13:50:09 | INFO    | evaluation             | pure_svd               P@10=0.2369 R@10=0.0885 NDCG@10=0.2619 Cov=0.157 Div=0.774
+2026-11-15 13:50:09 | INFO    | evaluation             | biased_mf              P@10=0.2131 R@10=0.0774 NDCG@10=0.2384 Cov=0.065 Div=0.762 RMSE=1.0199 MAE=0.8203
+2026-11-15 13:50:09 | INFO    | evaluation             | hybrid                 P@10=0.2586 R@10=0.0912 NDCG@10=0.2878 Cov=0.147 Div=0.685 RMSE=1.0199 MAE=0.8203
+2026-11-15 13:50:10 | INFO    | evaluation             | Results table:
+            precision@10  recall@10  ndcg@10  hit_rate@10  coverage@10  diversity@10  novelty@10    rmse     mae  warm_ndcg@10  cold_ndcg@10
+popularity        0.2293     0.0847   0.2537       0.7621       0.0456        0.7856      7.7793  1.0332  0.8354        0.1331        0.3153
+item_knn          0.2266     0.0776   0.2463       0.7483       0.1517        0.7824      8.0220  1.0464  0.8401        0.1111        0.3153
+pure_svd          0.2369     0.0885   0.2619       0.7724       0.1570        0.7738      8.0037     NaN     NaN        0.1573        0.3153
+biased_mf         0.2131     0.0774   0.2384       0.7138       0.0652        0.7620      8.8751  1.0199  0.8203        0.0877        0.3153
+hybrid            0.2586     0.0912   0.2878       0.7483       0.1469        0.6849      8.1583  1.0199  0.8203        0.1647        0.3507
+2026-11-15 13:50:10 | INFO    | evaluation             | Best model by NDCG@10: hybrid -> registered as movielens-recommender v2

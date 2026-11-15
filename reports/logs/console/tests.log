@@ -1,0 +1,17 @@
+$ python -m pytest -v
+============================= test session starts ==============================
+platform darwin -- Python 3.12.13, pytest-9.2.0, pluggy-1.7.0 -- /Users/kgopagon/Downloads/sem1/sem2/recommendation-pipeline/.venv/bin/python
+rootdir: /Users/kgopagon/Downloads/sem1/sem2/recommendation-pipeline
+plugins: typeguard-4.6.0, anyio-4.16.0
+collecting ... collected 8 items
+
+tests/test_metrics.py::test_precision_recall_hit PASSED                  [ 12%]
+tests/test_metrics.py::test_ndcg_perfect_and_partial PASSED              [ 25%]
+tests/test_metrics.py::test_coverage_and_diversity PASSED                [ 37%]
+tests/test_metrics.py::test_rating_errors PASSED                         [ 50%]
+tests/test_preparation_features.py::test_temporal_split_has_no_leakage PASSED [ 62%]
+tests/test_preparation_features.py::test_conflicting_pairs_keep_latest PASSED [ 75%]
+tests/test_preparation_features.py::test_features_are_point_in_time PASSED [ 87%]
+tests/test_validation.py::test_interaction_rules_quarantine_bad_records PASSED [100%]
+
+============================== 8 passed in 0.38s ===============================

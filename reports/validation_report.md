@@ -1,7 +1,7 @@
 # Data Validation Report
 
-*Generated:* 2026-11-15T08:16:03.764313+00:00  
-*Ingestion batch:* `20261115T081603-9badad`  
+*Generated:* 2026-11-15T08:19:46.640942+00:00  
+*Ingestion batch:* `20261115T081946-4b2041`  
 *Overall status:* **PASS**
 
 ## Summary

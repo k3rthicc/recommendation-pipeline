@@ -1,0 +1,19 @@
+$ python -m src.pipeline --stage prepare
+2026-11-15 13:49:11 | INFO    | pipeline               | ===== stage prepare   started =====
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: users_exact_duplicates_removed                       3
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: users_conflicting_keys_resolved                      0
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: users_gender_set_unknown                             2
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: users_age_imputed_by_occupation_median               5
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: items_exact_duplicates_removed                       2
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: items_release_date_imputed_from_title_year           4
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: items_release_date_still_missing                     1
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: items_columns_dropped                                ['video_release_date (100% null)']
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: interactions_exact_duplicates_removed                15
+2026-11-15 13:49:11 | INFO    | preparation            | cleaning: interactions_conflicting_pairs_resolved_keep_latest  5
+2026-11-15 13:49:11 | INFO    | preparation            | Clean tables -> users=952 items=1688 interactions=100000
+2026-11-15 13:49:11 | INFO    | preparation            | Time-based split @ 1998-03-07 : train=80003 (1997-09-20..1998-03-07) test=19997
+2026-11-15 13:49:11 | INFO    | preparation            | Test users=301 (warm=109, cold-start=192); relevant test interactions=11302
+2026-11-15 13:49:11 | INFO    | preparation            | Inner validation split @ 1998-02-17 : train_inner=72002 val=8001
+2026-11-15 13:49:11 | INFO    | preparation            | No leakage check passed: max(train.ts) < min(test.ts)
+2026-11-15 13:49:11 | INFO    | pipeline               | ===== stage prepare   finished in 0.2s =====
+2026-11-15 13:49:11 | INFO    | pipeline               | Pipeline finished (prepare) in 0.2s

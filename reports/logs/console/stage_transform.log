@@ -1,0 +1,8 @@
+$ python -m src.pipeline --stage transform
+2026-11-15 13:49:12 | INFO    | pipeline               | ===== stage transform started =====
+2026-11-15 13:49:13 | INFO    | transformation         | user_activity_summary rows=751 (median interactions/user=66)
+2026-11-15 13:49:13 | INFO    | transformation         | item_popularity rows=1688; top-3: Star Wars (1977), Return of the Jedi (1983), Fargo (1996)
+2026-11-15 13:49:13 | INFO    | transformation         | item_genres (long) rows=2901; daily_activity rows=167
+2026-11-15 13:49:13 | INFO    | transformation         | user_item_matrix shape=(952, 1688) nnz=80003 sparsity=95.02%
+2026-11-15 13:49:13 | INFO    | pipeline               | ===== stage transform finished in 0.1s =====
+2026-11-15 13:49:13 | INFO    | pipeline               | Pipeline finished (transform) in 0.1s

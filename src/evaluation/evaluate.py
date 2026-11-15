@@ -98,6 +98,7 @@ def register_best(best: str, registry: dict) -> str | None:
             name="recommender", python_model=RecommenderPyfunc(),
             artifacts={"model": str(path("models", f"{best}.pkl"))}, code_paths=[str(PROJECT_ROOT / "src")],
             input_example=pd.DataFrame({"user_id": [1, 2]}),
+            pip_requirements=str(PROJECT_ROOT / "requirements.txt"),
             registered_model_name="movielens-recommender",
         )
     return getattr(info, "registered_model_version", None)
