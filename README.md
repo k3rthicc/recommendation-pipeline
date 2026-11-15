@@ -110,6 +110,7 @@ pip install -r requirements.txt          # or: make setup
 | Experiment tracking UI | `mlflow ui --backend-store-uri sqlite:///models/mlflow.db` -> <http://127.0.0.1:5000> |
 | Get recommendations | `python -m src.predict --user-ids 1 945 --k 10 [--model hybrid]` |
 | Unit tests | `pytest -q` |
+| Regenerate evidence and PDF | `reports/build/capture_console.sh`, then (with `pip install playwright`, Chrome installed, Prefect + MLflow UIs running) `python reports/build/render_console.py`, `python reports/build/ui_screenshots.py <flow_run_id>`, `python reports/build/build_report.py` |
 
 A full run takes about 40 s on a laptop. All randomness is seeded (`project.seed: 42`), and two independent runs give identical metrics.
 
